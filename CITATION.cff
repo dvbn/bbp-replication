@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite the paper when using these replication files."
 type: software
-title: "Dealing with Logs and Zeros in Regression Models: Python replication"
+title: "Dealing with Logs and Zeros in Regression Models: replication files"
 authors:
   - family-names: Benatia
     given-names: David
@@ -10,3 +10,46 @@ authors:
   - family-names: Pape
     given-names: Louis-Daniel
 version: 1.0.0
+license: BSD-3-Clause
+repository-code: "https://github.com/dvbn/bbp-replication"
+preferred-citation:
+  type: article
+  title: "Dealing with Logs and Zeros in Regression Models"
+  authors:
+    - family-names: Benatia
+      given-names: David
+    - family-names: Bellégo
+      given-names: Christophe
+    - family-names: Pape
+      given-names: Louis-Daniel
+  journal: "arXiv preprint"
+  year: 2022
+  doi: "10.48550/arXiv.2203.11820"
+  url: "https://arxiv.org/abs/2203.11820"
+references:
+  - type: article
+    title: "Bias and Consistency in Three-Way Gravity Models"
+    authors:
+      - family-names: Weidner
+        given-names: Martin
+      - family-names: Zylkin
+        given-names: Thomas
+    journal: "Journal of International Economics"
+    volume: 132
+    start: 103513
+    year: 2021
+    doi: "10.1016/j.jinteco.2021.103513"
+  - type: article
+    title: "Pre-Colonial Ethnic Institutions and Contemporary African Development"
+    authors:
+      - family-names: Michalopoulos
+        given-names: Stelios
+      - family-names: Papaioannou
+        given-names: Elias
+    journal: "Econometrica"
+    volume: 81
+    issue: 1
+    start: 113
+    end: 152
+    year: 2013
+    doi: "10.3982/ECTA9613"

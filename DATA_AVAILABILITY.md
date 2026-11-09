@@ -2,32 +2,34 @@
 
 ## Empirical application
 
-The nighttime-lights data come from:
+The nighttime-light data come from
 
-Stelios Michalopoulos and Elias Papaioannou (2013), **Pre-Colonial Ethnic Institutions and Contemporary African Development**, *Econometrica* 81(1), 113–152. [Article DOI: 10.3982/ECTA9613](https://doi.org/10.3982/ECTA9613).
+> Stelios Michalopoulos and Elias Papaioannou (2013), "Pre-Colonial Ethnic Institutions and Contemporary African Development," *Econometrica* 81(1), 113–152. [doi:10.3982/ECTA9613](https://doi.org/10.3982/ECTA9613).
 
-The source is the authors' [original replication package, hosted by the Econometric Society](https://www.econometricsociety.org/publications/econometrica/2013/01/01/pre%E2%80%90colonial-ethnic-institutions-and-contemporary-african/supp/9613_data_and_programs_0.zip), specifically `4web/ethnicity-country-data-final.dta`. Only the variables needed for this application are supplied here. Other archive members, including unrelated map data, are not redistributed.
+The source file is `4web/ethnicity-country-data-final.dta` in the authors' [replication package, hosted by the Econometric Society](https://www.econometricsociety.org/publications/econometrica/2013/01/01/pre%E2%80%90colonial-ethnic-institutions-and-contemporary-african/supp/9613_data_and_programs_0.zip). Only the variables used by this application are included here; no other file of the archive, including its map data, is redistributed.
 
-The publisher's [Econometrica permissions page](https://www.econometricsociety.org/publications/econometrica/permissions) permits reuse and sharing of authors' replication data in another replication package with attribution, citations to both the paper and replication package, a Data Availability statement and the data files. Other owners' rights and the publisher's commercial-use conditions remain applicable. These third-party data are outside this repository's BSD-3-Clause code license. Please cite both the original article and its replication package in manuscripts and READMEs using these data.
+**Terms of use.** The publisher's [Econometrica permissions page](https://www.econometricsociety.org/publications/econometrica/permissions) permits reuse and sharing of authors' replication data in another replication package, with attribution, citations of both the article and its replication package, a data availability statement and the data files. Rights of other owners and the publisher's conditions on commercial use still apply. These third-party data are not covered by this repository's BSD-3-Clause code license. Work that uses them should cite both the article above and its replication package:
 
-### Included file and preparation
+> Stelios Michalopoulos and Elias Papaioannou (2013), Supplement to "Pre-Colonial Ethnic Institutions and Contemporary African Development," *Econometrica* Supplemental Material, 81. [Replication data and programs](https://www.econometricsociety.org/publications/econometrica/2013/01/01/pre%E2%80%90colonial-ethnic-institutions-and-contemporary-african/supp/9613_data_and_programs_0.zip).
 
-`empirical/data/greek_econometrica_data.csv` contains 683 original rows, the original source identifier, nighttime-light density, the hierarchy variable and eleven controls, and the country and ethnic-family keys. The application applies its own complete-case, singleton, deletion and positive-outcome sample rules; the input file does not pre-delete observations.
+### Included file and how it was prepared
 
-`empirical/fetch_data.py` reconstructs this file directly from the publisher's archive. It applies the eight-significant-digit precision of the historical Stata text export, maps original ISO country codes to their original numeric encoding, and uses `empirical/row_order.json` to retain the original source order. That order matters for the defined bright-tail tie rule. All used values and keys match the historical application input exactly. Actual raw zeros are retained; outcomes are not reconstructed from rounded logarithms.
+`empirical/data/greek_econometrica_data.csv` contains 683 rows of the original data: the source identifier, nighttime light density, the hierarchy index, the eleven controls, and the country and ethnic-family identifiers. The file deletes no observation; the complete-case, singleton, tail-deletion and positive-outcome rules are applied by the application code.
+
+`empirical/fetch_data.py` rebuilds this file directly from the publisher's archive. It rounds values to the eight significant digits of the historical Stata text export, maps the original ISO country codes to their original numeric codes, and restores the original row order from `empirical/row_order.json`; the order matters because it breaks ties when the brightest observations are removed. All values and identifiers used by the application match the historical input exactly. Zero outcomes are the original zeros, not values reconstructed from rounded logarithms.
 
 ```bash
 python empirical/fetch_data.py --output outputs/data/greek_econometrica_data.csv
 ```
 
-For an already downloaded original ZIP, add `--archive /path/to/9613_data_and_programs.zip`.
+To use an archive that has already been downloaded, add `--archive /path/to/9613_data_and_programs.zip`.
 
-| Artifact | SHA-256 |
+| File | SHA-256 |
 |---|---|
 | Original publisher ZIP | `7ea2271378956abff4fa940a21d1e9f5e34f7485bee731023f1fef1e3213058d` |
-| Original Stata data member | `00d1e5aef7d83fea297b88f63fcbdc98336449689aedd0caa02367adc1471ad7` |
+| Original Stata data file | `00d1e5aef7d83fea297b88f63fcbdc98336449689aedd0caa02367adc1471ad7` |
 | Included prepared CSV | `dc87346ef99d34ce46bdfd075356cd951bbd0d4df1dbf38e85da41326667bf54` |
 
 ## Simulations and saved results
 
-Simulation inputs are generated by the included routines from the documented seeds and settings. `saved/` contains the numerical estimates and summaries used to rebuild the paper displays. It contains no confidential application data or private development records.
+The simulated data are generated by the included code from the documented seeds and settings; no simulated dataset is stored. `saved/` contains the numerical estimates and summaries used to rebuild the paper's displays. It contains no confidential data and no development records.
