@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the BBP simulations or rebuild the paper displays from saved results."""
+"""Run the BBP simulations/application or rebuild the paper displays."""
 
 from __future__ import annotations
 
@@ -23,9 +23,10 @@ def positive_int(value: str) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=("report", "smoke", "full"), default="report")
-    parser.add_argument("--study", choices=("all", "wz", "solvers"), default="all")
+    parser.add_argument("--study", choices=("all", "wz", "solvers", "empirical"), default="all")
     parser.add_argument("--output", type=Path, help="Output directory; default: outputs/MODE")
     parser.add_argument("--input-root", type=Path, help="Saved-result root for report mode")
+    parser.add_argument("--data", type=Path, help="Empirical input CSV; default: bundled original application data")
     parser.add_argument("--replications", type=positive_int, help="Limit each cell to this many replications; save numerical results without automatic reporting")
     parser.add_argument("--paper-only", action="store_true", help="WZ: run only T=2 cells")
     parser.add_argument("--skip-pilot", action="store_true", help="WZ: omit the separate covariance pilot")
@@ -39,8 +40,16 @@ def main() -> int:
         parser.error("--check-reference applies to the original saved-result report")
     if args.mode == "report" and (args.replications is not None or args.resume or args.paper_only or args.skip_pilot):
         parser.error("--replications, --resume, --paper-only and --skip-pilot are numerical-run options")
+    if args.data is not None:
+        if args.mode == "report" or args.study not in ("all", "empirical"):
+            parser.error("--data applies to numerical runs of the empirical application")
+        args.data = args.data.expanduser().resolve()
+        if not args.data.is_file():
+            parser.error("--data must name an existing CSV file")
+    if args.study == "empirical" and (args.replications is not None or args.paper_only or args.skip_pilot):
+        parser.error("Simulation replication/grid options do not apply to the empirical study")
     output = (args.output or ROOT / "outputs" / args.mode).expanduser().resolve()
-    protected = [ROOT / p for p in ("saved", "reference", "wz", "solvers", "reporting", "docs")]
+    protected = [ROOT / p for p in ("saved", "reference", "wz", "solvers", "empirical", "reporting", "docs")]
     if output == ROOT or any(output.is_relative_to(p) for p in protected):
         parser.error("choose an output directory outside the supplied source and saved inputs")
     output.mkdir(parents=True, exist_ok=True)
@@ -56,10 +65,10 @@ def main() -> int:
 
     try:
         if args.mode != "report":
-            studies = ("wz", "solvers") if args.study == "all" else (args.study,)
+            studies = ("wz", "solvers", "empirical") if args.study == "all" else (args.study,)
             for study in studies:
                 command = [str(ROOT / study / "run.py"), "--mode", args.mode, "--output", str(output / study)]
-                if args.replications is not None:
+                if args.replications is not None and study != "empirical":
                     command.extend(("--replications", str(args.replications)))
                 if args.resume:
                     command.append("--resume")
@@ -68,6 +77,8 @@ def main() -> int:
                         command.append("--paper-only")
                     if args.skip_pilot:
                         command.append("--skip-pilot")
+                if study == "empirical" and args.data is not None:
+                    command.extend(("--data", str(args.data)))
                 run(command)
             if args.mode == "smoke":
                 print(f"Small numerical run finished. Results: {output}")

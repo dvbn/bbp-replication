@@ -1,0 +1,40 @@
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Five-sample sensitivity results: percentage associations and \(p\)-values}
+\label{table:application-full-grid}
+\setlength{\tabcolsep}{2pt}
+\newcommand{\BBPappcell}[2]{\shortstack{\(#1\)\\(\(#2\))}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccccc@{}}
+\toprule
+Specification & FE & Full & Drop 1 & Drop 1\% & Drop 2\% & Drop 5\% \\
+Observations & & 682 & 681 & 675 & 668 & 646 \\
+\midrule
+OLS, \(c=10^{-5}\) & Abs. & \BBPappcell{19.90}{0.122} & \BBPappcell{20.89}{0.116} & \BBPappcell{22.77^{*}}{0.089} & \BBPappcell{25.29^{*}}{0.066} & \BBPappcell{19.93}{0.196} \\
+OLS, \(c=0.01\) & Abs. & \BBPappcell{19.32^{***}}{<0.001} & \BBPappcell{20.38^{***}}{<0.001} & \BBPappcell{20.02^{***}}{<0.001} & \BBPappcell{20.49^{***}}{<0.001} & \BBPappcell{16.20^{***}}{0.003} \\
+OLS, \(c=1\) & Abs. & \BBPappcell{5.44^{***}}{<0.001} & \BBPappcell{6.13^{***}}{<0.001} & \BBPappcell{5.21^{***}}{<0.001} & \BBPappcell{4.86^{***}}{<0.001} & \BBPappcell{2.85^{***}}{0.001} \\
+PPML, \(Y\) & J=C & \BBPappcell{-10.46}{0.226} & \BBPappcell{0.76}{0.929} & \BBPappcell{8.37}{0.287} & \BBPappcell{21.43^{**}}{0.040} & \BBPappcell{8.24^{*}}{0.052} \\
+GPML, \(Y\) & J & \BBPappcell{16.04^{**}}{0.011} & \BBPappcell{17.85^{***}}{0.008} & \BBPappcell{18.30^{***}}{0.005} & \BBPappcell{19.80^{***}}{0.002} & \BBPappcell{15.95^{**}}{0.032} \\
+GPML, \(Y\) & C & \BBPappcell{14.88^{**}}{0.019} & \BBPappcell{21.70^{***}}{<0.001} & \BBPappcell{27.16^{***}}{<0.001} & \BBPappcell{34.93^{***}}{<0.001} & \BBPappcell{15.94^{***}}{0.002} \\
+Poisson, \(\sqrt{Y}\) & J=C & \BBPappcell{-1.56}{0.819} & \BBPappcell{4.48}{0.511} & \BBPappcell{9.25}{0.153} & \BBPappcell{15.97^{*}}{0.062} & \BBPappcell{5.95}{0.258} \\
+Gamma, \(\sqrt{Y}\) & J & \BBPappcell{14.74}{0.110} & \BBPappcell{15.86^{*}}{0.098} & \BBPappcell{16.43^{*}}{0.084} & \BBPappcell{18.18^{*}}{0.062} & \BBPappcell{13.16}{0.246} \\
+Gamma, \(\sqrt{Y}\) & C & \BBPappcell{15.31^{***}}{0.005} & \BBPappcell{18.55^{***}}{0.004} & \BBPappcell{20.33^{***}}{0.005} & \BBPappcell{25.27^{***}}{0.002} & \BBPappcell{7.86}{0.344} \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\BBPtablenotes{Entries are percentage associations per
+hierarchy category, with two-sided normal \(p\)-values in parentheses.
+Stars use unrounded values: \(^{***}p<0.01\), \(^{**}p<0.05\),
+\(^{*}p<0.10\). J denotes joint country effects, C cancellation and Abs.\
+OLS absorption. OLS uses \(\log(Y+c)\); Poisson and Gamma denote
+\(\tau=1,2\) weighting of the stated outcome. Square-root rows report
+\(100(\exp(2\gamma_h)-1)\). Every fit includes the eleven controls and
+all 164 zero outcomes. Deletions remove the original-ranked 1, 7, 14
+and 35 brightest observations; the last also excludes a country
+singleton. Covariance is signed two-way
+CR0 as in \eqref{eq:app-application-twoway-covariance}.}
+\end{minipage}
+\end{singlespace}
+\end{table}

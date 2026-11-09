@@ -1,0 +1,330 @@
+\begingroup
+\newcommand{\BBPcoefcell}[2]{\shortstack{\(#1\)\\(\(#2\))}}
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Shifted-log slope coefficients: \(c=10^{-5}\)}
+\label{table:application-coefficients-ols}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+Regressor & Full & Drop 1 & Drop 1\% & Drop 2\% & Drop 5\% & \(Y>0\) \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.182}{0.117} & \BBPcoefcell{0.190}{0.121} & \BBPcoefcell{0.205^{*}}{0.121} & \BBPcoefcell{0.225^{*}}{0.123} & \BBPcoefcell{0.182}{0.141} & \BBPcoefcell{0.149^{**}}{0.061} \\
+Log population density & \BBPcoefcell{1.147^{***}}{0.135} & \BBPcoefcell{1.140^{***}}{0.134} & \BBPcoefcell{1.167^{***}}{0.129} & \BBPcoefcell{1.157^{***}}{0.130} & \BBPcoefcell{1.141^{***}}{0.130} & \BBPcoefcell{0.679^{***}}{0.121} \\
+Distance to capital & \BBPcoefcell{-0.689}{0.709} & \BBPcoefcell{-0.682}{0.707} & \BBPcoefcell{-0.738}{0.696} & \BBPcoefcell{-0.793}{0.696} & \BBPcoefcell{-0.964}{0.682} & \BBPcoefcell{-0.407}{0.446} \\
+Distance to coast & \BBPcoefcell{0.017}{0.824} & \BBPcoefcell{0.018}{0.825} & \BBPcoefcell{0.129}{0.825} & \BBPcoefcell{0.194}{0.844} & \BBPcoefcell{0.404}{0.843} & \BBPcoefcell{-0.680^{**}}{0.346} \\
+Distance to border & \BBPcoefcell{-0.563}{2.304} & \BBPcoefcell{-0.610}{2.316} & \BBPcoefcell{-0.265}{2.262} & \BBPcoefcell{-0.241}{2.271} & \BBPcoefcell{-0.841}{2.337} & \BBPcoefcell{0.369}{0.612} \\
+Log water area & \BBPcoefcell{0.028}{0.288} & \BBPcoefcell{0.025}{0.289} & \BBPcoefcell{0.020}{0.299} & \BBPcoefcell{-0.011}{0.305} & \BBPcoefcell{0.003}{0.318} & \BBPcoefcell{0.361^{***}}{0.094} \\
+Log land area & \BBPcoefcell{0.940^{***}}{0.130} & \BBPcoefcell{0.945^{***}}{0.130} & \BBPcoefcell{0.939^{***}}{0.131} & \BBPcoefcell{0.949^{***}}{0.131} & \BBPcoefcell{1.010^{***}}{0.140} & \BBPcoefcell{-0.073}{0.077} \\
+Mean elevation & \BBPcoefcell{-0.212}{0.764} & \BBPcoefcell{-0.197}{0.765} & \BBPcoefcell{-0.170}{0.779} & \BBPcoefcell{-0.182}{0.786} & \BBPcoefcell{-0.156}{0.824} & \BBPcoefcell{0.167}{0.324} \\
+Agricultural suitability & \BBPcoefcell{0.393}{0.778} & \BBPcoefcell{0.378}{0.776} & \BBPcoefcell{0.290}{0.808} & \BBPcoefcell{0.426}{0.783} & \BBPcoefcell{0.800}{0.841} & \BBPcoefcell{-0.023}{0.283} \\
+Malaria suitability & \BBPcoefcell{-1.959^{**}}{0.804} & \BBPcoefcell{-1.931^{**}}{0.804} & \BBPcoefcell{-1.888^{**}}{0.801} & \BBPcoefcell{-1.906^{**}}{0.808} & \BBPcoefcell{-2.049^{**}}{0.846} & \BBPcoefcell{-0.404}{0.385} \\
+Petroleum indicator & \BBPcoefcell{0.666}{0.528} & \BBPcoefcell{0.679}{0.526} & \BBPcoefcell{0.640}{0.498} & \BBPcoefcell{0.637}{0.465} & \BBPcoefcell{0.742^{*}}{0.402} & \BBPcoefcell{0.825^{***}}{0.238} \\
+Diamond indicator & \BBPcoefcell{-0.252}{0.337} & \BBPcoefcell{-0.250}{0.338} & \BBPcoefcell{-0.265}{0.335} & \BBPcoefcell{-0.264}{0.332} & \BBPcoefcell{-0.280}{0.338} & \BBPcoefcell{0.011}{0.229} \\
+\midrule
+Observations & 682 & 681 & 675 & 668 & 646 & 517 \\
+Country effects & Absorbed & Absorbed & Absorbed & Absorbed & Absorbed & Absorbed \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} OLS coefficients for \(\log(Y+c)\), with signed country--ethnic-family two-way CR0 standard errors in parentheses. Coefficients are in the original regressor units listed in Section~\ref{app:applications}; they are not percentage changes. The five zero-inclusive samples keep all 164 zeros; the positive-only column excludes them and a resulting country singleton. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), using two-sided normal tests and unrounded coefficients and standard errors. Deletions remove the original-ranked 1, 7, 14 and 35 largest outcome values; the last also excludes a country singleton. No finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Shifted-log slope coefficients: \(c=0.01\)}
+\label{table:application-coefficients-ols-2}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+Regressor & Full & Drop 1 & Drop 1\% & Drop 2\% & Drop 5\% & \(Y>0\) \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.177^{***}}{0.041} & \BBPcoefcell{0.185^{***}}{0.046} & \BBPcoefcell{0.182^{***}}{0.044} & \BBPcoefcell{0.186^{***}}{0.045} & \BBPcoefcell{0.150^{***}}{0.051} & \BBPcoefcell{0.159^{***}}{0.042} \\
+Log population density & \BBPcoefcell{0.437^{***}}{0.056} & \BBPcoefcell{0.430^{***}}{0.054} & \BBPcoefcell{0.430^{***}}{0.054} & \BBPcoefcell{0.412^{***}}{0.050} & \BBPcoefcell{0.387^{***}}{0.047} & \BBPcoefcell{0.498^{***}}{0.089} \\
+Distance to capital & \BBPcoefcell{-0.096}{0.308} & \BBPcoefcell{-0.088}{0.307} & \BBPcoefcell{-0.190}{0.269} & \BBPcoefcell{-0.256}{0.250} & \BBPcoefcell{-0.358^{*}}{0.215} & \BBPcoefcell{-0.262}{0.331} \\
+Distance to coast & \BBPcoefcell{-0.320}{0.277} & \BBPcoefcell{-0.320}{0.277} & \BBPcoefcell{-0.224}{0.255} & \BBPcoefcell{-0.163}{0.251} & \BBPcoefcell{-0.009}{0.236} & \BBPcoefcell{-0.366}{0.267} \\
+Distance to border & \BBPcoefcell{0.928}{0.601} & \BBPcoefcell{0.876}{0.607} & \BBPcoefcell{0.745}{0.549} & \BBPcoefcell{0.745}{0.552} & \BBPcoefcell{0.369}{0.514} & \BBPcoefcell{0.660}{0.548} \\
+Log water area & \BBPcoefcell{0.002}{0.099} & \BBPcoefcell{-0.001}{0.099} & \BBPcoefcell{0.003}{0.097} & \BBPcoefcell{-0.003}{0.098} & \BBPcoefcell{0.036}{0.099} & \BBPcoefcell{0.152^{*}}{0.087} \\
+Log land area & \BBPcoefcell{0.129^{***}}{0.039} & \BBPcoefcell{0.134^{***}}{0.040} & \BBPcoefcell{0.141^{***}}{0.042} & \BBPcoefcell{0.146^{***}}{0.040} & \BBPcoefcell{0.160^{***}}{0.043} & \BBPcoefcell{-0.033}{0.055} \\
+Mean elevation & \BBPcoefcell{-0.195}{0.295} & \BBPcoefcell{-0.179}{0.294} & \BBPcoefcell{-0.125}{0.303} & \BBPcoefcell{-0.087}{0.303} & \BBPcoefcell{-0.033}{0.312} & \BBPcoefcell{-0.098}{0.235} \\
+Agricultural suitability & \BBPcoefcell{0.466^{*}}{0.252} & \BBPcoefcell{0.450^{*}}{0.250} & \BBPcoefcell{0.356}{0.265} & \BBPcoefcell{0.414}{0.253} & \BBPcoefcell{0.421}{0.283} & \BBPcoefcell{0.051}{0.231} \\
+Malaria suitability & \BBPcoefcell{-0.995^{***}}{0.286} & \BBPcoefcell{-0.964^{***}}{0.281} & \BBPcoefcell{-0.889^{***}}{0.283} & \BBPcoefcell{-0.859^{***}}{0.264} & \BBPcoefcell{-0.903^{***}}{0.280} & \BBPcoefcell{-0.792^{***}}{0.304} \\
+Petroleum indicator & \BBPcoefcell{0.750^{***}}{0.263} & \BBPcoefcell{0.765^{***}}{0.259} & \BBPcoefcell{0.631^{***}}{0.213} & \BBPcoefcell{0.551^{***}}{0.188} & \BBPcoefcell{0.613^{***}}{0.196} & \BBPcoefcell{0.730^{***}}{0.215} \\
+Diamond indicator & \BBPcoefcell{-0.125}{0.141} & \BBPcoefcell{-0.123}{0.142} & \BBPcoefcell{-0.137}{0.142} & \BBPcoefcell{-0.123}{0.143} & \BBPcoefcell{-0.065}{0.143} & \BBPcoefcell{-0.030}{0.125} \\
+\midrule
+Observations & 682 & 681 & 675 & 668 & 646 & 517 \\
+Country effects & Absorbed & Absorbed & Absorbed & Absorbed & Absorbed & Absorbed \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} OLS coefficients for \(\log(Y+c)\), with signed country--ethnic-family two-way CR0 standard errors in parentheses. Coefficients are in the original regressor units listed in Section~\ref{app:applications}; they are not percentage changes. The five zero-inclusive samples keep all 164 zeros; the positive-only column excludes them and a resulting country singleton. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), using two-sided normal tests and unrounded coefficients and standard errors. Deletions remove the original-ranked 1, 7, 14 and 35 largest outcome values; the last also excludes a country singleton. No finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Shifted-log slope coefficients: \(c=1\)}
+\label{table:application-coefficients-ols-3}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+Regressor & Full & Drop 1 & Drop 1\% & Drop 2\% & Drop 5\% & \(Y>0\) \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.053^{***}}{0.015} & \BBPcoefcell{0.059^{***}}{0.015} & \BBPcoefcell{0.051^{***}}{0.014} & \BBPcoefcell{0.047^{***}}{0.013} & \BBPcoefcell{0.028^{***}}{0.009} & \BBPcoefcell{0.049^{**}}{0.019} \\
+Log population density & \BBPcoefcell{0.072^{***}}{0.015} & \BBPcoefcell{0.067^{***}}{0.013} & \BBPcoefcell{0.057^{***}}{0.012} & \BBPcoefcell{0.046^{***}}{0.008} & \BBPcoefcell{0.034^{***}}{0.006} & \BBPcoefcell{0.109^{***}}{0.023} \\
+Distance to capital & \BBPcoefcell{0.085}{0.122} & \BBPcoefcell{0.091}{0.122} & \BBPcoefcell{0.011}{0.079} & \BBPcoefcell{-0.022}{0.053} & \BBPcoefcell{-0.048^{*}}{0.025} & \BBPcoefcell{0.048}{0.152} \\
+Distance to coast & \BBPcoefcell{-0.130}{0.103} & \BBPcoefcell{-0.129}{0.103} & \BBPcoefcell{-0.076}{0.075} & \BBPcoefcell{-0.051}{0.046} & \BBPcoefcell{0.001}{0.022} & \BBPcoefcell{-0.108}{0.121} \\
+Distance to border & \BBPcoefcell{0.537^{***}}{0.204} & \BBPcoefcell{0.499^{**}}{0.196} & \BBPcoefcell{0.223^{*}}{0.126} & \BBPcoefcell{0.208^{*}}{0.116} & \BBPcoefcell{0.086}{0.068} & \BBPcoefcell{0.497^{**}}{0.204} \\
+Log water area & \BBPcoefcell{-0.048}{0.029} & \BBPcoefcell{-0.050^{*}}{0.029} & \BBPcoefcell{-0.041^{*}}{0.024} & \BBPcoefcell{-0.036^{*}}{0.020} & \BBPcoefcell{-0.011}{0.016} & \BBPcoefcell{-0.036}{0.030} \\
+Log land area & \BBPcoefcell{-0.010}{0.010} & \BBPcoefcell{-0.007}{0.009} & \BBPcoefcell{0.003}{0.009} & \BBPcoefcell{0.004}{0.008} & \BBPcoefcell{0.004}{0.005} & \BBPcoefcell{-0.009}{0.013} \\
+Mean elevation & \BBPcoefcell{-0.163^{**}}{0.067} & \BBPcoefcell{-0.151^{**}}{0.065} & \BBPcoefcell{-0.105^{*}}{0.055} & \BBPcoefcell{-0.071}{0.045} & \BBPcoefcell{-0.038}{0.039} & \BBPcoefcell{-0.184^{***}}{0.068} \\
+Agricultural suitability & \BBPcoefcell{0.206^{***}}{0.069} & \BBPcoefcell{0.194^{***}}{0.070} & \BBPcoefcell{0.130}{0.079} & \BBPcoefcell{0.131^{**}}{0.060} & \BBPcoefcell{0.049}{0.043} & \BBPcoefcell{0.127^{*}}{0.070} \\
+Malaria suitability & \BBPcoefcell{-0.258^{***}}{0.082} & \BBPcoefcell{-0.236^{***}}{0.076} & \BBPcoefcell{-0.171^{**}}{0.085} & \BBPcoefcell{-0.139^{**}}{0.055} & \BBPcoefcell{-0.134^{***}}{0.041} & \BBPcoefcell{-0.292^{***}}{0.098} \\
+Petroleum indicator & \BBPcoefcell{0.260^{**}}{0.114} & \BBPcoefcell{0.270^{**}}{0.113} & \BBPcoefcell{0.150^{**}}{0.062} & \BBPcoefcell{0.095^{***}}{0.033} & \BBPcoefcell{0.113^{**}}{0.047} & \BBPcoefcell{0.248^{**}}{0.110} \\
+Diamond indicator & \BBPcoefcell{-0.055}{0.040} & \BBPcoefcell{-0.054}{0.040} & \BBPcoefcell{-0.062}{0.039} & \BBPcoefcell{-0.052}{0.039} & \BBPcoefcell{-0.016}{0.022} & \BBPcoefcell{-0.049}{0.043} \\
+\midrule
+Observations & 682 & 681 & 675 & 668 & 646 & 517 \\
+Country effects & Absorbed & Absorbed & Absorbed & Absorbed & Absorbed & Absorbed \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} OLS coefficients for \(\log(Y+c)\), with signed country--ethnic-family two-way CR0 standard errors in parentheses. Coefficients are in the original regressor units listed in Section~\ref{app:applications}; they are not percentage changes. The five zero-inclusive samples keep all 164 zeros; the positive-only column excludes them and a resulting country singleton. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), using two-sided normal tests and unrounded coefficients and standard errors. Deletions remove the original-ranked 1, 7, 14 and 35 largest outcome values; the last also excludes a country singleton. No finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Arithmetic- and half-power-mean slope coefficients: full sample}
+\label{table:application-coefficients-full}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Arithmetic mean (\(\omega=1\))} & \multicolumn{3}{c}{Half-power mean (\(\omega=1/2\))} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Score index & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) \\
+Regressor / country FE & J=C & J & C & J=C & J & C \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{-0.110}{0.091} & \BBPcoefcell{0.149^{**}}{0.059} & \BBPcoefcell{0.139^{**}}{0.059} & \BBPcoefcell{-0.016}{0.068} & \BBPcoefcell{0.137}{0.086} & \BBPcoefcell{0.142^{***}}{0.051} \\
+Log population density & \BBPcoefcell{0.793^{***}}{0.186} & \BBPcoefcell{1.012^{***}}{0.160} & \BBPcoefcell{0.544^{***}}{0.131} & \BBPcoefcell{0.933^{***}}{0.209} & \BBPcoefcell{1.262^{***}}{0.240} & \BBPcoefcell{0.860^{***}}{0.182} \\
+Distance to capital & \BBPcoefcell{-0.549}{1.093} & \BBPcoefcell{-0.587}{0.419} & \BBPcoefcell{-0.615}{0.712} & \BBPcoefcell{-0.368}{0.712} & \BBPcoefcell{-0.931}{0.606} & \BBPcoefcell{-0.469}{0.665} \\
+Distance to coast & \BBPcoefcell{-1.271}{0.774} & \BBPcoefcell{0.323}{0.502} & \BBPcoefcell{-0.703}{0.481} & \BBPcoefcell{-0.854}{0.690} & \BBPcoefcell{0.671}{0.771} & \BBPcoefcell{-0.222}{0.646} \\
+Distance to border & \BBPcoefcell{0.182}{1.376} & \BBPcoefcell{-1.196}{1.572} & \BBPcoefcell{-0.079}{0.974} & \BBPcoefcell{-0.374}{1.519} & \BBPcoefcell{-2.287}{2.480} & \BBPcoefcell{-0.840}{1.389} \\
+Log water area & \BBPcoefcell{0.457}{0.355} & \BBPcoefcell{0.297^{*}}{0.169} & \BBPcoefcell{0.468^{*}}{0.258} & \BBPcoefcell{0.213}{0.218} & \BBPcoefcell{0.165}{0.261} & \BBPcoefcell{0.222}{0.258} \\
+Log land area & \BBPcoefcell{-0.144^{*}}{0.076} & \BBPcoefcell{0.305^{***}}{0.112} & \BBPcoefcell{-0.085}{0.096} & \BBPcoefcell{0.161}{0.102} & \BBPcoefcell{0.678^{***}}{0.189} & \BBPcoefcell{0.247}{0.154} \\
+Mean elevation & \BBPcoefcell{-0.504^{**}}{0.240} & \BBPcoefcell{-0.407}{0.421} & \BBPcoefcell{-0.504^{**}}{0.205} & \BBPcoefcell{-0.376}{0.381} & \BBPcoefcell{-0.243}{0.575} & \BBPcoefcell{-0.385}{0.355} \\
+Agricultural suitability & \BBPcoefcell{-0.170}{0.445} & \BBPcoefcell{-0.625}{0.452} & \BBPcoefcell{-0.080}{0.510} & \BBPcoefcell{-0.354}{0.506} & \BBPcoefcell{-1.024^{*}}{0.611} & \BBPcoefcell{-0.880}{0.611} \\
+Malaria suitability & \BBPcoefcell{-1.133^{***}}{0.313} & \BBPcoefcell{-2.189^{***}}{0.543} & \BBPcoefcell{-0.905^{**}}{0.352} & \BBPcoefcell{-1.160^{***}}{0.399} & \BBPcoefcell{-2.462^{***}}{0.786} & \BBPcoefcell{-1.540^{***}}{0.560} \\
+Petroleum indicator & \BBPcoefcell{0.781^{***}}{0.195} & \BBPcoefcell{0.702^{**}}{0.335} & \BBPcoefcell{0.488}{0.322} & \BBPcoefcell{0.707^{***}}{0.263} & \BBPcoefcell{0.753^{*}}{0.405} & \BBPcoefcell{0.373}{0.459} \\
+Diamond indicator & \BBPcoefcell{0.002}{0.230} & \BBPcoefcell{-0.144}{0.237} & \BBPcoefcell{-0.342}{0.346} & \BBPcoefcell{-0.149}{0.231} & \BBPcoefcell{-0.251}{0.314} & \BBPcoefcell{-0.227}{0.345} \\
+\midrule
+Observations & 682 & 682 & 682 & 682 & 682 & 682 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} Entries are \(\widehat\beta_\omega=\widehat\gamma/\omega\), with the correspondingly rescaled signed two-way CR0 standard errors in parentheses, in original regressor units. J denotes joint country effects and C cancellation. At \(\tau=1\), all twelve joint and cancelled slopes and their standard errors coincide. The full sample is kept. All 164 zero outcomes are kept. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), based on two-sided normal tests before rounding. No coefficient-bias or finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Arithmetic- and half-power-mean slope coefficients: largest outcome value excluded}
+\label{table:application-coefficients-bright-top1row}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Arithmetic mean (\(\omega=1\))} & \multicolumn{3}{c}{Half-power mean (\(\omega=1/2\))} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Score index & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) \\
+Regressor / country FE & J=C & J & C & J=C & J & C \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.008}{0.086} & \BBPcoefcell{0.164^{***}}{0.062} & \BBPcoefcell{0.196^{***}}{0.054} & \BBPcoefcell{0.044}{0.067} & \BBPcoefcell{0.147^{*}}{0.089} & \BBPcoefcell{0.170^{***}}{0.059} \\
+Log population density & \BBPcoefcell{0.653^{***}}{0.179} & \BBPcoefcell{0.999^{***}}{0.161} & \BBPcoefcell{0.509^{***}}{0.131} & \BBPcoefcell{0.875^{***}}{0.201} & \BBPcoefcell{1.253^{***}}{0.241} & \BBPcoefcell{0.840^{***}}{0.182} \\
+Distance to capital & \BBPcoefcell{-0.232}{0.995} & \BBPcoefcell{-0.561}{0.406} & \BBPcoefcell{-0.484}{0.659} & \BBPcoefcell{-0.268}{0.682} & \BBPcoefcell{-0.916}{0.599} & \BBPcoefcell{-0.417}{0.638} \\
+Distance to coast & \BBPcoefcell{-1.406^{*}}{0.732} & \BBPcoefcell{0.314}{0.503} & \BBPcoefcell{-0.755}{0.471} & \BBPcoefcell{-0.878}{0.687} & \BBPcoefcell{0.665}{0.771} & \BBPcoefcell{-0.241}{0.645} \\
+Distance to border & \BBPcoefcell{0.369}{1.143} & \BBPcoefcell{-1.178}{1.572} & \BBPcoefcell{0.041}{0.936} & \BBPcoefcell{-0.384}{1.503} & \BBPcoefcell{-2.295}{2.482} & \BBPcoefcell{-0.840}{1.395} \\
+Log water area & \BBPcoefcell{0.315}{0.374} & \BBPcoefcell{0.299^{*}}{0.169} & \BBPcoefcell{0.416}{0.260} & \BBPcoefcell{0.169}{0.220} & \BBPcoefcell{0.165}{0.260} & \BBPcoefcell{0.205}{0.258} \\
+Log land area & \BBPcoefcell{-0.100}{0.071} & \BBPcoefcell{0.310^{***}}{0.112} & \BBPcoefcell{-0.061}{0.097} & \BBPcoefcell{0.179^{*}}{0.101} & \BBPcoefcell{0.683^{***}}{0.189} & \BBPcoefcell{0.257^{*}}{0.154} \\
+Mean elevation & \BBPcoefcell{-0.428^{*}}{0.248} & \BBPcoefcell{-0.382}{0.418} & \BBPcoefcell{-0.399^{**}}{0.174} & \BBPcoefcell{-0.334}{0.386} & \BBPcoefcell{-0.225}{0.574} & \BBPcoefcell{-0.333}{0.350} \\
+Agricultural suitability & \BBPcoefcell{-0.302}{0.417} & \BBPcoefcell{-0.630}{0.445} & \BBPcoefcell{-0.109}{0.497} & \BBPcoefcell{-0.392}{0.496} & \BBPcoefcell{-1.027^{*}}{0.608} & \BBPcoefcell{-0.889}{0.602} \\
+Malaria suitability & \BBPcoefcell{-1.076^{***}}{0.295} & \BBPcoefcell{-2.116^{***}}{0.546} & \BBPcoefcell{-0.777^{**}}{0.338} & \BBPcoefcell{-1.125^{***}}{0.396} & \BBPcoefcell{-2.419^{***}}{0.788} & \BBPcoefcell{-1.463^{***}}{0.564} \\
+Petroleum indicator & \BBPcoefcell{0.818^{***}}{0.179} & \BBPcoefcell{0.721^{**}}{0.336} & \BBPcoefcell{0.538}{0.333} & \BBPcoefcell{0.740^{***}}{0.258} & \BBPcoefcell{0.766^{*}}{0.405} & \BBPcoefcell{0.412}{0.450} \\
+Diamond indicator & \BBPcoefcell{-0.009}{0.292} & \BBPcoefcell{-0.149}{0.236} & \BBPcoefcell{-0.374}{0.347} & \BBPcoefcell{-0.147}{0.241} & \BBPcoefcell{-0.252}{0.314} & \BBPcoefcell{-0.233}{0.346} \\
+\midrule
+Observations & 681 & 681 & 681 & 681 & 681 & 681 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} Entries are \(\widehat\beta_\omega=\widehat\gamma/\omega\), with the correspondingly rescaled signed two-way CR0 standard errors in parentheses, in original regressor units. J denotes joint country effects and C cancellation. At \(\tau=1\), all twelve joint and cancelled slopes and their standard errors coincide. The largest original outcome value is excluded. All 164 zero outcomes are kept. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), based on two-sided normal tests before rounding. No coefficient-bias or finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Arithmetic- and half-power-mean slope coefficients: brightest 1\% excluded}
+\label{table:application-coefficients-bright-top1pct}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Arithmetic mean (\(\omega=1\))} & \multicolumn{3}{c}{Half-power mean (\(\omega=1/2\))} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Score index & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) \\
+Regressor / country FE & J=C & J & C & J=C & J & C \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.080}{0.075} & \BBPcoefcell{0.168^{***}}{0.059} & \BBPcoefcell{0.240^{***}}{0.055} & \BBPcoefcell{0.088}{0.062} & \BBPcoefcell{0.152^{*}}{0.088} & \BBPcoefcell{0.185^{***}}{0.065} \\
+Log population density & \BBPcoefcell{0.916^{***}}{0.146} & \BBPcoefcell{1.010^{***}}{0.159} & \BBPcoefcell{0.670^{***}}{0.115} & \BBPcoefcell{1.065^{***}}{0.143} & \BBPcoefcell{1.272^{***}}{0.239} & \BBPcoefcell{0.970^{***}}{0.150} \\
+Distance to capital & \BBPcoefcell{-0.678}{0.713} & \BBPcoefcell{-0.760^{*}}{0.420} & \BBPcoefcell{-0.633}{0.461} & \BBPcoefcell{-0.615}{0.522} & \BBPcoefcell{-1.094^{*}}{0.613} & \BBPcoefcell{-0.693}{0.524} \\
+Distance to coast & \BBPcoefcell{-0.753}{0.566} & \BBPcoefcell{0.483}{0.522} & \BBPcoefcell{-0.159}{0.283} & \BBPcoefcell{-0.281}{0.543} & \BBPcoefcell{0.829}{0.803} & \BBPcoefcell{0.253}{0.527} \\
+Distance to border & \BBPcoefcell{0.551}{0.570} & \BBPcoefcell{-1.461}{1.480} & \BBPcoefcell{0.064}{0.674} & \BBPcoefcell{0.465}{0.910} & \BBPcoefcell{-2.458}{2.411} & \BBPcoefcell{-0.576}{1.122} \\
+Log water area & \BBPcoefcell{0.046}{0.097} & \BBPcoefcell{0.311^{*}}{0.173} & \BBPcoefcell{0.396}{0.264} & \BBPcoefcell{0.110}{0.091} & \BBPcoefcell{0.168}{0.275} & \BBPcoefcell{0.153}{0.271} \\
+Log land area & \BBPcoefcell{-0.017}{0.100} & \BBPcoefcell{0.316^{***}}{0.106} & \BBPcoefcell{0.031}{0.110} & \BBPcoefcell{0.194^{*}}{0.116} & \BBPcoefcell{0.691^{***}}{0.185} & \BBPcoefcell{0.324^{**}}{0.153} \\
+Mean elevation & \BBPcoefcell{-0.199}{0.317} & \BBPcoefcell{-0.323}{0.425} & \BBPcoefcell{-0.205}{0.196} & \BBPcoefcell{-0.232}{0.409} & \BBPcoefcell{-0.178}{0.588} & \BBPcoefcell{-0.212}{0.373} \\
+Agricultural suitability & \BBPcoefcell{-1.457^{***}}{0.296} & \BBPcoefcell{-0.739}{0.471} & \BBPcoefcell{-0.932^{*}}{0.553} & \BBPcoefcell{-1.085^{**}}{0.462} & \BBPcoefcell{-1.128^{*}}{0.638} & \BBPcoefcell{-1.572^{***}}{0.501} \\
+Malaria suitability & \BBPcoefcell{0.275}{0.404} & \BBPcoefcell{-2.080^{***}}{0.542} & \BBPcoefcell{-0.418}{0.357} & \BBPcoefcell{-0.516}{0.375} & \BBPcoefcell{-2.415^{***}}{0.788} & \BBPcoefcell{-1.331^{**}}{0.577} \\
+Petroleum indicator & \BBPcoefcell{0.514^{***}}{0.175} & \BBPcoefcell{0.525^{*}}{0.279} & \BBPcoefcell{0.160}{0.285} & \BBPcoefcell{0.539^{**}}{0.257} & \BBPcoefcell{0.633^{*}}{0.378} & \BBPcoefcell{0.201}{0.432} \\
+Diamond indicator & \BBPcoefcell{-0.089}{0.203} & \BBPcoefcell{-0.159}{0.237} & \BBPcoefcell{-0.432}{0.304} & \BBPcoefcell{-0.206}{0.224} & \BBPcoefcell{-0.266}{0.311} & \BBPcoefcell{-0.325}{0.319} \\
+\midrule
+Observations & 675 & 675 & 675 & 675 & 675 & 675 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} Entries are \(\widehat\beta_\omega=\widehat\gamma/\omega\), with the correspondingly rescaled signed two-way CR0 standard errors in parentheses, in original regressor units. J denotes joint country effects and C cancellation. At \(\tau=1\), all twelve joint and cancelled slopes and their standard errors coincide. The 7 brightest original observations are excluded. All 164 zero outcomes are kept. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), based on two-sided normal tests before rounding. No coefficient-bias or finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Arithmetic- and half-power-mean slope coefficients: brightest 2\% excluded}
+\label{table:application-coefficients-bright-top2pct}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Arithmetic mean (\(\omega=1\))} & \multicolumn{3}{c}{Half-power mean (\(\omega=1/2\))} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Score index & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) \\
+Regressor / country FE & J=C & J & C & J=C & J & C \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.194^{**}}{0.095} & \BBPcoefcell{0.181^{***}}{0.059} & \BBPcoefcell{0.300^{***}}{0.054} & \BBPcoefcell{0.148^{*}}{0.079} & \BBPcoefcell{0.167^{*}}{0.089} & \BBPcoefcell{0.225^{***}}{0.072} \\
+Log population density & \BBPcoefcell{0.844^{***}}{0.155} & \BBPcoefcell{1.006^{***}}{0.164} & \BBPcoefcell{0.614^{***}}{0.115} & \BBPcoefcell{1.040^{***}}{0.159} & \BBPcoefcell{1.273^{***}}{0.246} & \BBPcoefcell{0.946^{***}}{0.156} \\
+Distance to capital & \BBPcoefcell{-1.021}{0.696} & \BBPcoefcell{-0.806^{*}}{0.417} & \BBPcoefcell{-0.812^{**}}{0.351} & \BBPcoefcell{-0.831^{*}}{0.491} & \BBPcoefcell{-1.134^{*}}{0.614} & \BBPcoefcell{-0.851^{*}}{0.461} \\
+Distance to coast & \BBPcoefcell{-0.296}{0.511} & \BBPcoefcell{0.544}{0.530} & \BBPcoefcell{0.006}{0.254} & \BBPcoefcell{-0.001}{0.477} & \BBPcoefcell{0.890}{0.817} & \BBPcoefcell{0.428}{0.510} \\
+Distance to border & \BBPcoefcell{1.274^{**}}{0.599} & \BBPcoefcell{-1.424}{1.500} & \BBPcoefcell{0.510}{0.708} & \BBPcoefcell{0.768}{1.000} & \BBPcoefcell{-2.447}{2.443} & \BBPcoefcell{-0.463}{1.161} \\
+Log water area & \BBPcoefcell{-0.034}{0.100} & \BBPcoefcell{0.306^{*}}{0.176} & \BBPcoefcell{0.382}{0.261} & \BBPcoefcell{0.063}{0.094} & \BBPcoefcell{0.151}{0.282} & \BBPcoefcell{0.125}{0.280} \\
+Log land area & \BBPcoefcell{-0.017}{0.087} & \BBPcoefcell{0.319^{***}}{0.108} & \BBPcoefcell{0.057}{0.112} & \BBPcoefcell{0.197^{*}}{0.113} & \BBPcoefcell{0.702^{***}}{0.188} & \BBPcoefcell{0.347^{**}}{0.155} \\
+Mean elevation & \BBPcoefcell{-0.290}{0.321} & \BBPcoefcell{-0.353}{0.426} & \BBPcoefcell{-0.178}{0.216} & \BBPcoefcell{-0.312}{0.414} & \BBPcoefcell{-0.218}{0.593} & \BBPcoefcell{-0.256}{0.388} \\
+Agricultural suitability & \BBPcoefcell{-1.362^{***}}{0.259} & \BBPcoefcell{-0.628}{0.449} & \BBPcoefcell{-0.808^{*}}{0.482} & \BBPcoefcell{-0.933^{**}}{0.468} & \BBPcoefcell{-1.011}{0.623} & \BBPcoefcell{-1.311^{***}}{0.504} \\
+Malaria suitability & \BBPcoefcell{-0.014}{0.343} & \BBPcoefcell{-2.141^{***}}{0.556} & \BBPcoefcell{-0.485}{0.413} & \BBPcoefcell{-0.707^{**}}{0.350} & \BBPcoefcell{-2.486^{***}}{0.807} & \BBPcoefcell{-1.436^{**}}{0.621} \\
+Petroleum indicator & \BBPcoefcell{0.179}{0.186} & \BBPcoefcell{0.484^{*}}{0.259} & \BBPcoefcell{-0.032}{0.271} & \BBPcoefcell{0.355}{0.257} & \BBPcoefcell{0.637^{*}}{0.355} & \BBPcoefcell{0.105}{0.412} \\
+Diamond indicator & \BBPcoefcell{-0.226}{0.182} & \BBPcoefcell{-0.163}{0.236} & \BBPcoefcell{-0.513^{*}}{0.273} & \BBPcoefcell{-0.256}{0.209} & \BBPcoefcell{-0.275}{0.310} & \BBPcoefcell{-0.356}{0.299} \\
+\midrule
+Observations & 668 & 668 & 668 & 668 & 668 & 668 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} Entries are \(\widehat\beta_\omega=\widehat\gamma/\omega\), with the correspondingly rescaled signed two-way CR0 standard errors in parentheses, in original regressor units. J denotes joint country effects and C cancellation. At \(\tau=1\), all twelve joint and cancelled slopes and their standard errors coincide. The 14 brightest original observations are excluded. All 164 zero outcomes are kept. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), based on two-sided normal tests before rounding. No coefficient-bias or finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Arithmetic- and half-power-mean slope coefficients: brightest 5\% excluded}
+\label{table:application-coefficients-bright-top5pct}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Arithmetic mean (\(\omega=1\))} & \multicolumn{3}{c}{Half-power mean (\(\omega=1/2\))} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Score index & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) \\
+Regressor / country FE & J=C & J & C & J=C & J & C \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{0.079^{*}}{0.041} & \BBPcoefcell{0.148^{**}}{0.069} & \BBPcoefcell{0.148^{***}}{0.048} & \BBPcoefcell{0.058}{0.051} & \BBPcoefcell{0.124}{0.107} & \BBPcoefcell{0.076}{0.080} \\
+Log population density & \BBPcoefcell{0.788^{***}}{0.127} & \BBPcoefcell{0.988^{***}}{0.167} & \BBPcoefcell{0.658^{***}}{0.110} & \BBPcoefcell{1.031^{***}}{0.131} & \BBPcoefcell{1.272^{***}}{0.256} & \BBPcoefcell{0.995^{***}}{0.159} \\
+Distance to capital & \BBPcoefcell{-1.270^{***}}{0.470} & \BBPcoefcell{-1.064^{**}}{0.436} & \BBPcoefcell{-1.252^{***}}{0.310} & \BBPcoefcell{-1.097^{***}}{0.342} & \BBPcoefcell{-1.378^{**}}{0.644} & \BBPcoefcell{-1.306^{***}}{0.401} \\
+Distance to coast & \BBPcoefcell{0.822^{***}}{0.276} & \BBPcoefcell{0.869}{0.547} & \BBPcoefcell{0.867^{***}}{0.269} & \BBPcoefcell{0.627}{0.445} & \BBPcoefcell{1.189}{0.870} & \BBPcoefcell{1.148^{**}}{0.517} \\
+Distance to border & \BBPcoefcell{-0.093}{1.110} & \BBPcoefcell{-2.034}{1.481} & \BBPcoefcell{-1.033}{1.083} & \BBPcoefcell{-0.485}{1.282} & \BBPcoefcell{-3.189}{2.531} & \BBPcoefcell{-1.868}{1.416} \\
+Log water area & \BBPcoefcell{0.023}{0.152} & \BBPcoefcell{0.346^{*}}{0.196} & \BBPcoefcell{0.591^{**}}{0.269} & \BBPcoefcell{0.061}{0.141} & \BBPcoefcell{0.199}{0.299} & \BBPcoefcell{0.287}{0.319} \\
+Log land area & \BBPcoefcell{0.116}{0.079} & \BBPcoefcell{0.359^{***}}{0.125} & \BBPcoefcell{0.155}{0.101} & \BBPcoefcell{0.350^{***}}{0.107} & \BBPcoefcell{0.774^{***}}{0.215} & \BBPcoefcell{0.515^{***}}{0.155} \\
+Mean elevation & \BBPcoefcell{-0.569}{0.405} & \BBPcoefcell{-0.302}{0.472} & \BBPcoefcell{-0.505}{0.367} & \BBPcoefcell{-0.390}{0.510} & \BBPcoefcell{-0.188}{0.673} & \BBPcoefcell{-0.506}{0.542} \\
+Agricultural suitability & \BBPcoefcell{-0.428}{0.546} & \BBPcoefcell{-0.293}{0.476} & \BBPcoefcell{-0.130}{0.487} & \BBPcoefcell{-0.114}{0.596} & \BBPcoefcell{-0.587}{0.699} & \BBPcoefcell{-0.419}{0.649} \\
+Malaria suitability & \BBPcoefcell{-0.976^{***}}{0.371} & \BBPcoefcell{-2.239^{***}}{0.590} & \BBPcoefcell{-1.399^{***}}{0.479} & \BBPcoefcell{-1.274^{***}}{0.454} & \BBPcoefcell{-2.657^{***}}{0.870} & \BBPcoefcell{-2.235^{***}}{0.645} \\
+Petroleum indicator & \BBPcoefcell{0.478^{*}}{0.266} & \BBPcoefcell{0.498^{*}}{0.267} & \BBPcoefcell{0.222}{0.227} & \BBPcoefcell{0.520^{**}}{0.239} & \BBPcoefcell{0.676^{*}}{0.347} & \BBPcoefcell{0.234}{0.351} \\
+Diamond indicator & \BBPcoefcell{-0.167}{0.237} & \BBPcoefcell{-0.140}{0.254} & \BBPcoefcell{-0.198}{0.274} & \BBPcoefcell{-0.288}{0.225} & \BBPcoefcell{-0.309}{0.339} & \BBPcoefcell{-0.323}{0.276} \\
+\midrule
+Observations & 646 & 646 & 646 & 646 & 646 & 646 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} Entries are \(\widehat\beta_\omega=\widehat\gamma/\omega\), with the correspondingly rescaled signed two-way CR0 standard errors in parentheses, in original regressor units. J denotes joint country effects and C cancellation. At \(\tau=1\), all twelve joint and cancelled slopes and their standard errors coincide. The 35 brightest original observations are excluded. The resulting country singleton is also excluded. All 164 zero outcomes are kept. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), based on two-sided normal tests before rounding. No coefficient-bias or finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\footnotesize
+\caption{Arithmetic- and half-power-mean slope coefficients: positive outcomes only}
+\label{table:application-coefficients-positive-full}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Arithmetic mean (\(\omega=1\))} & \multicolumn{3}{c}{Half-power mean (\(\omega=1/2\))} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Score index & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) & \(\tau=1\) & \(\tau=2\) & \(\tau=2\) \\
+Regressor / country FE & J=C & J & C & J=C & J & C \\
+\midrule
+Jurisdictional hierarchy & \BBPcoefcell{-0.090}{0.098} & \BBPcoefcell{0.159^{***}}{0.057} & \BBPcoefcell{0.109^{*}}{0.062} & \BBPcoefcell{0.053}{0.077} & \BBPcoefcell{0.162^{***}}{0.054} & \BBPcoefcell{0.140^{***}}{0.048} \\
+Log population density & \BBPcoefcell{0.732^{***}}{0.194} & \BBPcoefcell{0.675^{***}}{0.095} & \BBPcoefcell{0.443^{***}}{0.109} & \BBPcoefcell{0.715^{***}}{0.182} & \BBPcoefcell{0.664^{***}}{0.101} & \BBPcoefcell{0.557^{***}}{0.115} \\
+Distance to capital & \BBPcoefcell{-0.574}{1.130} & \BBPcoefcell{-0.400}{0.395} & \BBPcoefcell{-0.649}{0.715} & \BBPcoefcell{-0.303}{0.719} & \BBPcoefcell{-0.413}{0.393} & \BBPcoefcell{-0.409}{0.580} \\
+Distance to coast & \BBPcoefcell{-1.100}{0.712} & \BBPcoefcell{-0.455}{0.345} & \BBPcoefcell{-0.672}{0.417} & \BBPcoefcell{-0.883}{0.547} & \BBPcoefcell{-0.531}{0.328} & \BBPcoefcell{-0.551}{0.361} \\
+Distance to border & \BBPcoefcell{0.236}{1.220} & \BBPcoefcell{0.069}{0.733} & \BBPcoefcell{0.359}{0.855} & \BBPcoefcell{0.305}{0.916} & \BBPcoefcell{0.146}{0.710} & \BBPcoefcell{0.359}{0.741} \\
+Log water area & \BBPcoefcell{0.510}{0.327} & \BBPcoefcell{0.379^{**}}{0.163} & \BBPcoefcell{0.488^{**}}{0.204} & \BBPcoefcell{0.334^{*}}{0.175} & \BBPcoefcell{0.356^{***}}{0.119} & \BBPcoefcell{0.358^{**}}{0.157} \\
+Log land area & \BBPcoefcell{-0.247^{***}}{0.081} & \BBPcoefcell{-0.103^{*}}{0.061} & \BBPcoefcell{-0.222^{***}}{0.068} & \BBPcoefcell{-0.140^{*}}{0.076} & \BBPcoefcell{-0.092}{0.064} & \BBPcoefcell{-0.144^{**}}{0.067} \\
+Mean elevation & \BBPcoefcell{-0.567^{**}}{0.230} & \BBPcoefcell{-0.177}{0.300} & \BBPcoefcell{-0.539^{***}}{0.188} & \BBPcoefcell{-0.331}{0.277} & \BBPcoefcell{-0.027}{0.319} & \BBPcoefcell{-0.301}{0.258} \\
+Agricultural suitability & \BBPcoefcell{-0.139}{0.393} & \BBPcoefcell{-0.061}{0.273} & \BBPcoefcell{0.248}{0.371} & \BBPcoefcell{-0.258}{0.361} & \BBPcoefcell{-0.052}{0.292} & \BBPcoefcell{-0.058}{0.326} \\
+Malaria suitability & \BBPcoefcell{-1.017^{***}}{0.304} & \BBPcoefcell{-1.140^{***}}{0.433} & \BBPcoefcell{-0.618^{**}}{0.261} & \BBPcoefcell{-0.734^{**}}{0.309} & \BBPcoefcell{-0.847^{**}}{0.388} & \BBPcoefcell{-0.699^{**}}{0.311} \\
+Petroleum indicator & \BBPcoefcell{0.856^{***}}{0.197} & \BBPcoefcell{0.727^{***}}{0.261} & \BBPcoefcell{0.740^{***}}{0.268} & \BBPcoefcell{0.856^{***}}{0.211} & \BBPcoefcell{0.786^{***}}{0.254} & \BBPcoefcell{0.776^{***}}{0.259} \\
+Diamond indicator & \BBPcoefcell{0.094}{0.201} & \BBPcoefcell{-0.007}{0.199} & \BBPcoefcell{-0.237}{0.285} & \BBPcoefcell{0.025}{0.202} & \BBPcoefcell{0.011}{0.201} & \BBPcoefcell{-0.069}{0.230} \\
+\midrule
+Observations & 517 & 517 & 517 & 517 & 517 & 517 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Notes:} Entries are \(\widehat\beta_\omega=\widehat\gamma/\omega\), with the correspondingly rescaled signed two-way CR0 standard errors in parentheses, in original regressor units. J denotes joint country effects and C cancellation. At \(\tau=1\), all twelve joint and cancelled slopes and their standard errors coincide. Positive outcomes only; the country-singleton rule is reapplied. This outcome-selected sample changes the population. \(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\), based on two-sided normal tests before rounding. No coefficient-bias or finite-sample covariance correction is applied.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\endgroup

@@ -19,6 +19,8 @@ TABLES = {
            "fe_higher_order_covariance_pilot_T2.tex"),
     "solvers": ("solver_preliminary_main.tex", "solver_preliminary_appendix.tex",
                 "solver_safeguarded_appendix.tex", "solver_statistical_stress.tex"),
+    "empirical": ("application_sensitivity.tex", "application_all_coefficients.tex",
+                  "application_full_grid.tex", "application_full_intervals.tex", "application_positive_only.tex"),
 }
 
 
@@ -97,7 +99,7 @@ def verify_tables(output, reference, names=None):
 def run(input_root, output, study="all", tables_only=False, check_reference=None):
     inputs, output = Path(input_root).resolve(), Path(output).resolve()
     if (output == inputs or inputs.is_relative_to(output)
-            or any(output.is_relative_to(inputs / name) for name in ("wz", "solvers"))):
+            or any(output.is_relative_to(inputs / name) for name in TABLES)):
         raise ValueError("Reporting output must be separate from its input tree")
     output.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault("MPLCONFIGDIR", str(output / ".matplotlib"))
@@ -108,14 +110,26 @@ def run(input_root, output, study="all", tables_only=False, check_reference=None
     if study in ("all", "wz"):
         import wz_tables
         wz_tables.render(inputs, output)
+    empirical = None
+    if study in ("all", "empirical"):
+        import empirical_tables
+        empirical = empirical_tables.render(inputs, output)
     if not tables_only:
         import figures
         figures.render(inputs, output, study)
     names = [name for group, files in TABLES.items() if study in ("all", group) for name in files]
+    figure_count = sum(study in ("all", group) for group in ("wz", "solvers"))
     result = dict(study=study, tables=len(names),
-                  figures=0 if tables_only else (2 if study == "all" else 1), model_fits=0)
+                  figures=0 if tables_only else figure_count, model_fits=0)
+    if empirical is not None:
+        result["empirical"] = empirical
     if check_reference is not None:
-        result["reference_checks"] = verify_tables(output, check_reference, names)
+        simulation_names = [name for group, files in TABLES.items()
+                            if group != "empirical" and study in ("all", group) for name in files]
+        checks = verify_tables(output, check_reference, simulation_names) if simulation_names else []
+        if empirical is not None:
+            checks += [row | dict(rows=row["data_rows"]) for row in empirical_tables.verify(output, check_reference)]
+        result["reference_checks"] = checks
     (output / "display_summary.json").write_text(json.dumps(result, indent=2) + "\n")
     return result
 
@@ -124,7 +138,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input-root", "--inputs-root", type=Path, default=BUNDLE / "saved")
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--study", choices=("all", "wz", "solvers"), default="all")
+    parser.add_argument("--study", choices=("all", "wz", "solvers", "empirical"), default="all")
     parser.add_argument("--tables-only", action="store_true", help="Skip density and accuracy figures")
     parser.add_argument("--check-reference", nargs="?", const=BUNDLE / "reference/tables", type=Path,
                         help="Compare generated numeric table cells with the paper reference tables")

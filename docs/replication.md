@@ -16,6 +16,10 @@ The main runner writes paper outputs into the `paper/` subdirectory of the selec
 | `fe_gpml_T2_compact.pdf` | GPML coefficient densities at N=20/50/100, T=2; all 5,000 draws enter each curve |
 | `fe_wz_covariance_comparison_T2.tex` | Ordinary pair sandwich and WZ-adjusted covariance at the same WZ-corrected PPML coefficient |
 | `fe_higher_order_covariance_pilot_T2.tex` | Separate first-100-draw covariance pilot at N=50/T=2; generic corrected coefficient held fixed |
+| `application_sensitivity.tex` | Main nighttime-lights application: percentage associations and inference in four selected samples |
+| `application_all_coefficients.tex` | Nine coefficient/standard-error tables: three shifted-log models across six samples and six sample-specific power-model tables |
+| `application_full_grid.tex`, `application_full_intervals.tex` | Five-sample arithmetic/half-power and shifted-log associations, p-values and transformed 95% intervals |
+| `application_positive_only.tex` | Positive-outcome-only associations and inference for all nine distinct models |
 
 The FE figure has 36 curves: four DGPs, three GPML methods and three sample sizes. It uses the original Silverman bandwidth rule and display-window calculation. Every draw contributes to the density; a plot window does not trim the sample. The exact final historical plotting script was unavailable, so the public renderer recreates the numerical content with its own typography/layout. Historical PDFs are supplied for comparison.
 
@@ -43,8 +47,14 @@ Historical raw costs, prospective termination and common-budget eligibility rema
 
 Changing hardware, BLAS/compiler or floating-point environment can change runtimes and numerical boundary cases. Saved-result reporting rebuilds the completed paper results. Fresh reruns use the same designs, algorithms and settings, with their own recorded outcomes. Numerical examples and representative historical-value checks establish that the packaged paths run; they do not stand in for a newly executed full campaign.
 
+## Empirical application
+
+The empirical application can be reproduced independently with `python run.py --mode full --study empirical`. It refits all six samples from the bundled, attributed input data and generates its own reporting inputs. `--mode report --study empirical --check-reference` instead regenerates the 13 empirical tables from saved coefficients. Neither command needs the native IOLS module. See [application instructions](../empirical/README.md) and [Data availability](../DATA_AVAILABILITY.md).
+
+The application uses original-unit slopes, country effects and signed country-plus-family-minus-intersection CR0 covariance, without an eigenvalue or finite-sample adjustment. Half-power regressions use sqrt(Y); coefficients and standard errors are divided by omega=1/2 before retransformation. Paired comparisons use the cross-model covariance from stacked row influences. Shifted-log associations concern Y+c, and the outcome restrictions are sensitivity exercises. The application applies no incidental-parameter coefficient correction. All 792 coefficient rows and 2,002 country-intercept point estimates remain available; missing intercept standard errors are not replaced by zeros.
+
 ## Environment and output checks
 
 The checked local environment is macOS arm64, CPython 3.14.3, NumPy 2.4.2, SciPy 1.17.0, pandas 3.0.0, Matplotlib 3.10.8, scikit-learn 1.8.0 and statsmodels 0.15.0. The native build uses pybind11 3.0.2 and Eigen 5.0.1, with optimized release settings and precise floating-point flags. Numerical runners use POSIX process/timer facilities. Other platforms are not certified by the local check.
 
-`--check-reference` compares numeric data cells in all seven data-bearing LaTeX files; the eighth is an FE-table wrapper. Both figures export their plotted numerical data alongside the PDF/PNG files. Regeneration never falls back from missing fresh results to the supplied original summaries.
+`--check-reference` compares the seven data-bearing simulation files (plus an FE-table wrapper) and five empirical files. The latter contain all 13 empirical tables, including coefficients, standard errors, significance stars, p-values and confidence intervals. Both figures export their plotted numerical data alongside the PDF/PNG files. Regeneration never falls back from missing fresh results to the supplied original summaries.

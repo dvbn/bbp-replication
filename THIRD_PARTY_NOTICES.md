@@ -1,5 +1,7 @@
 # Third-party notices
 
+The empirical data are attributed to Michalopoulos and Papaioannou (2013) and their original Econometrica replication package. They retain the source's conditions and are not covered by our code license. See [Data availability and attribution](DATA_AVAILABILITY.md).
+
 The bundled scikit-learn-derived files `solvers/src/library/vendor_newton.py` and `vendor_linear_loss.py` retain their source notices. Their applicable BSD license is reproduced below.
 
 BSD 3-Clause License

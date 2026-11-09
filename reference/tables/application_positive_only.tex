@@ -1,0 +1,35 @@
+\begin{table}[!htbp]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Positive-outcome-only sample: percentage associations and inference}
+\label{table:application-positive-only}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccc@{}}
+\toprule
+Specification & FE & Estimate & 95\% interval & \(p\)-value \\
+\midrule
+OLS, \(c=10^{-5}\) & Abs. & \(16.12^{**}\) & \([3.10,30.78]\) & \(0.014\) \\
+OLS, \(c=0.01\) & Abs. & \(17.18^{***}\) & \([7.93,27.22]\) & \(<0.001\) \\
+OLS, \(c=1\) & Abs. & \(4.99^{**}\) & \([1.14,8.99]\) & \(0.011\) \\
+PPML, \(Y\) & J=C & \(-8.57\) & \([-24.51,10.74]\) & \(0.360\) \\
+GPML, \(Y\) & J & \(17.27^{***}\) & \([4.86,31.15]\) & \(0.005\) \\
+GPML, \(Y\) & C & \(11.56^{*}\) & \([-1.29,26.08]\) & \(0.080\) \\
+Poisson, \(\sqrt{Y}\) & J=C & \(5.48\) & \([-9.33,22.71]\) & \(0.490\) \\
+Gamma, \(\sqrt{Y}\) & J & \(17.59^{***}\) & \([5.70,30.81]\) & \(0.003\) \\
+Gamma, \(\sqrt{Y}\) & C & \(15.02^{***}\) & \([4.65,26.42]\) & \(0.004\) \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\BBPtablenotes{The sample contains 517 observations in
+47 countries and 93 ethnic families after excluding zeros and a resulting
+country singleton. All eleven controls are kept; no upper-tail cut
+is applied. Estimates, intervals, stars and FE notation follow
+Tables~\ref{table:application-full-grid}--\ref{table:application-full-intervals}.
+Covariance is the signed two-way CR0 estimator in
+\eqref{eq:app-application-twoway-covariance}, without a finite-sample or
+eigenvalue adjustment. Joint and cancelled \(\tau=1\) fits coincide.}
+\end{minipage}
+\end{singlespace}
+\end{table}

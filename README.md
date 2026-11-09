@@ -4,7 +4,7 @@ Replication files for **Dealing with Logs and Zeros in Regression Models**, by D
 
 **Paper:** [arXiv:2203.11820](https://arxiv.org/abs/2203.11820).
 
-This standalone repository contains the historical Python implementations for the paper's WZ fixed-effect simulations and six-method IOLS/solver comparison. The numerical kernels used for these studies are bundled. The general [powermean package](https://github.com/dvbn/powermean) is developed separately.
+This standalone repository contains the historical Python implementations for the paper's WZ fixed-effect simulations, six-method IOLS/solver comparison and [nighttime-lights empirical application](#empirical-application). The numerical kernels used for these studies are bundled. The general [powermean package](https://github.com/dvbn/powermean) is developed separately.
 
 ## Key results
 
@@ -67,6 +67,34 @@ See the [full fixed-effect table](reference/tables/fe_T2_main_body.tex) and [rep
 
 Run `python run.py --mode report --check-reference` to regenerate the figures and tables from the supplied numerical inputs.
 
+### Empirical application
+
+The application revisits pre-colonial political centralization and nighttime-light density across African ethnic homelands. It retains the original regressors, country effects and country/ethnic-family clustering, and reproduces all six samples, the arithmetic- and half-power-mean specifications, three shifted-log OLS fits, all coefficients and paired comparisons.
+
+After installing `requirements.txt`, run:
+
+```bash
+python run.py --mode report --study empirical --check-reference
+python run.py --mode full --study empirical
+```
+
+The first command rebuilds all **13 empirical tables** from saved results. The second refits the complete application from the bundled data, including bright-tail deletions and the positive-outcome-only check, then rebuilds those tables. It does not require the C++ IOLS build or an internet connection.
+
+Each cell below shows the **percentage association (two-sided p-value)** for one hierarchy category. PPML and GPML concern mean light density; shifted-log OLS concerns the geometric mean of Y+c. These are conditional associations. Outcome-selected samples are sensitivity checks.
+
+| Specification | Full (n=682) | Drop 2% (n=668) | Drop 5% (n=646) | Positive only (n=517) |
+|---|---:|---:|---:|---:|
+| OLS, c=0.00001 | 19.90 (0.122) | 25.29 (0.066) | 19.93 (0.196) | 16.12 (0.014) |
+| OLS, c=0.01 | 19.32 (<0.001) | 20.49 (<0.001) | 16.20 (0.003) | 17.18 (<0.001) |
+| OLS, c=1 | 5.44 (<0.001) | 4.86 (<0.001) | 2.85 (0.001) | 4.99 (0.011) |
+| PPML (joint = cancelled) | -10.46 (0.226) | 21.43 (0.040) | 8.24 (0.052) | -8.57 (0.360) |
+| GPML (joint) | 16.04 (0.011) | 19.80 (0.002) | 15.95 (0.032) | 17.27 (0.005) |
+| GPML (cancelled) | 14.88 (0.019) | 34.93 (<0.001) | 15.94 (0.002) | 11.56 (0.080) |
+
+Standard errors use the signed country + ethnic-family − intersection CR0 covariance. The complete tables include the brightest-observation and top-1% deletions, transformed normal 95% intervals, half-power models and all 792 slope rows. See the [application instructions](empirical/README.md) and [main table](reference/tables/application_sensitivity.tex).
+
+**Data attribution:** Michalopoulos and Papaioannou (2013), *Pre-Colonial Ethnic Institutions and Contemporary African Development*, Econometrica 81(1), 113–152 ([article](https://doi.org/10.3982/ECTA9613); [original replication package](https://www.econometricsociety.org/publications/econometrica/2013/01/01/pre%E2%80%90colonial-ethnic-institutions-and-contemporary-african/supp/9613_data_and_programs_0.zip)). The included application input is an attributed subset of these data. [Data availability and reconstruction](DATA_AVAILABILITY.md) documents its source, preparation and applicable terms.
+
 ## Rebuild the paper tables and figures
 
 Use Python 3.14. The checked environment uses CPython 3.14.3; dependency versions are in `requirements.txt`.
@@ -80,7 +108,7 @@ python run.py --mode report --check-reference
 
 On Windows, activate the environment with `.venv\Scripts\activate` instead. Numerical simulation runners require Linux or macOS; report mode uses ordinary Python/NumPy/Matplotlib.
 
-The command regenerates eight LaTeX table files, numerical CSV tables and two figures in PDF/PNG format under `outputs/report/paper/`. It checks the displayed table values against the supplied paper references. It performs no estimation and needs no compiler, LaTeX installation, account or external service. Only NumPy and Matplotlib are needed if installing dependencies just for this reporting step.
+The command regenerates thirteen LaTeX files covering the simulations and all 13 empirical tables, numerical CSV tables and two figures in PDF/PNG format under `outputs/report/paper/`. It checks the displayed table values against the supplied paper references. It performs no estimation and needs no compiler, LaTeX installation, account or external service. Only NumPy and Matplotlib are needed if installing dependencies just for this reporting step.
 
 Saved inputs are restricted to the current displays. `reference/` contains expected paper tables and figures; `saved/` contains the numerical inputs used to regenerate them. The regenerated figures preserve the plotted numerical content with updated typography/layout.
 
@@ -95,7 +123,7 @@ python run.py --mode smoke
 
 The Eigen directory must contain `Eigen/Core`. Eigen 3.4 or later is required; the checked local build uses Eigen 5.0.1. The script builds with one compilation job, optimized release settings and the historical floating-point flags. It does not download headers. Compiled binaries are built locally and are not distributed in this repository.
 
-The smoke command runs a small WZ example, one covariance-pilot case, and both equations through all six solver methods. Results go to `outputs/smoke/`. A missing native module is reported explicitly. To run only WZ, which does not need this C++ module:
+The smoke command runs a small WZ example, one covariance-pilot case, both equations through all six solver methods, and the empirical full-sample specifications. Results go to `outputs/smoke/`. A missing native module is reported explicitly. To run only WZ, which does not need this C++ module:
 
 ```bash
 python run.py --mode smoke --study wz
@@ -107,7 +135,7 @@ python run.py --mode smoke --study wz
 python run.py --mode full
 ```
 
-This is a substantial simulation campaign: 180,000 base WZ draw-cells, 20,000 independent N500 extension draw-cells, the separate 400-case covariance pilot, and 480,000 scheduled solver records across 40,000 datasets. Default execution is sequential with one BLAS/OpenMP thread per process. Completed case records are saved for resumption. Once both complete studies have finished, their own results are used to rebuild the displays under `outputs/full/paper/`.
+This is a substantial simulation campaign: 180,000 base WZ draw-cells, 20,000 independent N500 extension draw-cells, the separate 400-case covariance pilot, 480,000 scheduled solver records across 40,000 datasets, and the empirical application’s six samples. Default execution is sequential with one BLAS/OpenMP thread per process. Completed case records are saved for resumption. Once the selected studies have finished, their own results are used to rebuild the displays under `outputs/full/paper/`.
 
 To continue an interrupted run, repeat the same command with `--resume`. Keep the code, dependencies and scientific options unchanged. A fresh output directory is required for a different configuration.
 
@@ -116,6 +144,7 @@ Useful restricted runs:
 ```bash
 python run.py --mode full --study wz --paper-only
 python run.py --mode full --study solvers
+python run.py --mode full --study empirical
 python run.py --mode full --replications 2 --output outputs/small
 ```
 
@@ -133,6 +162,7 @@ Original CPU timings are reproduced by the saved-result route. New simulation ti
 
 - `wz/`: generators, historical numerical routines, configuration and covariance pilot. See [WZ instructions](wz/README.md).
 - `solvers/`: six-method comparison, native build and scientific execution schedule. See [solver instructions](solvers/README.md).
+- `empirical/`: bundled application data, preparation, refitting and paired inference. See [application instructions](empirical/README.md).
 - `reporting/`: small saved-result renderers.
 - `saved/` and `reference/`: inputs and expected paper outputs.
 - [Replication details](docs/replication.md): output map, seeds, method definitions and numerical qualifications.
