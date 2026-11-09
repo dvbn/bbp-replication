@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite the paper when using these replication files."
+type: software
+title: "Dealing with Logs and Zeros in Regression Models: Python replication"
+authors:
+  - family-names: Benatia
+    given-names: David
+  - family-names: Bellégo
+    given-names: Christophe
+  - family-names: Pape
+    given-names: Louis-Daniel
+version: 1.0.0

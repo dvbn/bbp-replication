@@ -1,0 +1,91 @@
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Solver outcomes and CPU time: ordinary designs}
+\label{tab:solver-preliminary-appendix}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & Accurate & \multicolumn{3}{c}{Unsuccessful fits} & \multicolumn{4}{c}{CPU seconds per attempt}\\
+\cmidrule(lr){3-5}\cmidrule(l){6-9}
+Solver & fits & Audit miss & Other & Limit & Median & Mean & 95th pct. & Max.\\
+\midrule
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=1,000\), PPML}: 15,642 attempts; 358 structural exclusions}\\
+IOLS, NumPy & 15,642 & 0 & 0 & 0 & 0.0081 & 0.0097 & 0.0181 & 0.0572\\
+IOLS & 15,642 & 0 & 0 & 0 & 0.0024 & 0.0027 & 0.0046 & 0.0129\\
+Newton & 15,642 & 0 & 0 & 0 & 0.0010 & 0.0011 & 0.0012 & 0.0038\\
+IRLS & 15,642 & 0 & 0 & 0 & 0.0012 & 0.0013 & 0.0015 & 0.0044\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=1,000\), GPML}: 15,642 attempts; 358 structural exclusions}\\
+IOLS, NumPy & 15,642 & 0 & 0 & 0 & 0.0096 & 0.0330 & 0.0142 & 33.4882\\
+IOLS & 15,642 & 0 & 0 & 0 & 0.0027 & 0.0081 & 0.0039 & 7.9340\\
+Newton & 15,338 & 200 & 59 & 45 & 0.0010 & 0.0281 & 0.0022 & 7.6487\\
+IRLS & 15,631 & 0 & 0 & 11 & 0.0028 & 0.0116 & 0.0049 & 12.0966\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=10,000\), PPML}: 16,000 attempts; 0 structural exclusions}\\
+IOLS, NumPy & 16,000 & 0 & 0 & 0 & 0.1667 & 0.1724 & 0.2125 & 0.5068\\
+IOLS & 16,000 & 0 & 0 & 0 & 0.1060 & 0.1108 & 0.1375 & 0.3110\\
+Newton & 16,000 & 0 & 0 & 0 & 0.0674 & 0.0697 & 0.0845 & 0.1576\\
+IRLS & 16,000 & 0 & 0 & 0 & 0.1996 & 0.2061 & 0.2627 & 0.4028\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=10,000\), GPML}: 16,000 attempts; 0 structural exclusions}\\
+IOLS, NumPy & 16,000 & 0 & 0 & 0 & 0.1800 & 0.1834 & 0.2164 & 0.4877\\
+IOLS & 16,000 & 0 & 0 & 0 & 0.1147 & 0.1179 & 0.1407 & 0.3134\\
+Newton & 15,949 & 7 & 44 & 0 & 0.0673 & 0.1072 & 0.1655 & 163.6568\\
+IRLS & 15,994 & 0 & 2 & 4 & 0.5552 & 1.2431 & 1.1846 & 2282.1670\\
+\addlinespace[2pt]
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} Full matched sample. Accurate fits pass the common \(10^{-8}\) check; audit misses are native successes failing that check. Other is the remaining native or numerical failure category. Limit combines disjoint internal iteration-limit failures and observed timeouts; the companion summaries keep their separate counts. CPU summaries include every attempted call, including unsuccessful and timed-out calls, but exclude data generation, external auditing and the separately recorded interrupted attempt. These are raw recorded costs, not clipped common-budget costs. IOLS is C++; NumPy is separate. Newton and IRLS use statsmodels. Full and exclude-inspected-20 summaries are in \texttt{data/solver\_summary}.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Solver outcomes and CPU time: stress designs}
+\label{tab:solver-preliminary-stress}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & Accurate & \multicolumn{3}{c}{Unsuccessful fits} & \multicolumn{4}{c}{CPU seconds per attempt}\\
+\cmidrule(lr){3-5}\cmidrule(l){6-9}
+Solver & fits & Audit miss & Other & Limit & Median & Mean & 95th pct. & Max.\\
+\midrule
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=1,000\), PPML}: 4,000 attempts; 0 structural exclusions}\\
+IOLS, NumPy & 4,000 & 0 & 0 & 0 & 0.0125 & 0.0177 & 0.0176 & 18.9930\\
+IOLS & 4,000 & 0 & 0 & 0 & 0.0034 & 0.0048 & 0.0046 & 4.7294\\
+Newton & 3,994 & 2 & 0 & 4 & 0.0012 & 0.0093 & 0.0017 & 8.1989\\
+IRLS & 3,994 & 2 & 2 & 2 & 0.0015 & 0.0078 & 0.0022 & 12.4169\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=1,000\), GPML}: 3,987 attempts; 13 structural exclusions}\\
+IOLS, NumPy & 3,986 & 0 & 1 & 0 & 0.0110 & 0.0275 & 0.0576 & 16.9556\\
+IOLS & 3,987 & 0 & 0 & 0 & 0.0033 & 0.0065 & 0.0143 & 3.7966\\
+Newton & 3,404 & 379 & 1 & 203 & 0.0015 & 0.4357 & 7.5756 & 8.5704\\
+IRLS & 2,353 & 3 & 922 & 709 & 0.0034 & 2.2226 & 12.5946 & 13.3424\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=10,000\), PPML}: 4,000 attempts; 0 structural exclusions}\\
+IOLS, NumPy & 4,000 & 0 & 0 & 0 & 0.2428 & 0.3201 & 0.8305 & 1.9809\\
+IOLS & 4,000 & 0 & 0 & 0 & 0.1582 & 0.2019 & 0.4876 & 0.9663\\
+Newton & 3,813 & 115 & 27 & 45 & 0.1129 & 4.0402 & 0.2608 & 779.7904\\
+IRLS & 3,986 & 0 & 14 & 0 & 0.3966 & 0.4957 & 1.1158 & 6.9824\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=10,000\), GPML}: 4,000 attempts; 0 structural exclusions}\\
+IOLS, NumPy & 4,000 & 0 & 0 & 0 & 0.2117 & 0.2837 & 0.5752 & 1.6057\\
+IOLS & 4,000 & 0 & 0 & 0 & 0.1437 & 0.1923 & 0.3980 & 0.8071\\
+Newton & 2,890 & 698 & 22 & 390 & 0.1054 & 44.2015 & 513.5965 & 803.0819\\
+IRLS & 999 & 0 & 2,998 & 3 & 0.3389 & 1.9225 & 0.6335 & 2269.2296\\
+\addlinespace[2pt]
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} Full matched sample. Accurate fits pass the common \(10^{-8}\) check; audit misses are native successes failing that check. Other is the remaining native or numerical failure category. Limit combines disjoint internal iteration-limit failures and observed timeouts; the companion summaries keep their separate counts. CPU summaries include every attempted call, including unsuccessful and timed-out calls, but exclude data generation, external auditing and the separately recorded interrupted attempt. These are raw recorded costs, not clipped common-budget costs. IOLS is C++; NumPy is separate. Newton and IRLS use statsmodels. Full and exclude-inspected-20 summaries are in \texttt{data/solver\_summary}.
+\end{minipage}
+\end{singlespace}
+\end{table}

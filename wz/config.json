@@ -1,0 +1,364 @@
+{
+  "base": {
+    "config_name": "wz_base",
+    "packet": "M",
+    "base_seed": 20261002,
+    "master_N": 100,
+    "master_T": 10,
+    "dgps": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "cells": [
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        50,
+        2
+      ],
+      [
+        50,
+        5
+      ],
+      [
+        50,
+        10
+      ],
+      [
+        100,
+        2
+      ],
+      [
+        100,
+        5
+      ],
+      [
+        100,
+        10
+      ]
+    ],
+    "reps": [
+      1,
+      5000
+    ],
+    "tau_grid": [
+      1,
+      2
+    ],
+    "cancel_solve_order": [
+      2,
+      1
+    ],
+    "continuation_neighbor": {
+      "1": 2,
+      "2": null
+    },
+    "run_all_starts": true,
+    "contrast_basis": "helmert",
+    "offdiag": false,
+    "dgp_params": {
+      "sd_effect": 0.0625,
+      "sd_nu": 0.5,
+      "ar_rho": 0.3,
+      "beta0": 1.0,
+      "x_lag": 0.5,
+      "dgp4_variant": "tables"
+    },
+    "solver": {
+      "max_iter": 200,
+      "max_backtracks": 60,
+      "backtrack_factor": 0.5,
+      "armijo": 0.0001
+    },
+    "tolerances": {
+      "tol_scaled": 1e-10,
+      "tol_scaled_normalisation": "max_k |S_k| / sum_g sum_t |b_gtk| (t_gt + a_g w_gt)",
+      "tol_step": 1e-09,
+      "tol_step_normalisation": "||H^{-1} S||_inf in retained log-index coordinates",
+      "rcond_min": 1e-13,
+      "rcond_normalisation": "LAPACK dgecon 1-norm estimate of H/(s s'), s_k = sqrt(max(rowmax_k, colmax_k))",
+      "tol_metric_residual": 1e-10,
+      "tol_metric_residual_normalisation": "sqrt((S/n)' A^{-1} (S/n)); S raw estimating-equation sum, n fitted observations; A = H_Gamma/n for the raw-sum Gamma-pilot curvature or A = B'B/n for the already-averaged design-Gram fallback; lower Cholesky factor of A only",
+      "tol_metric_step": 1e-09,
+      "tol_metric_step_normalisation": "sqrt(p' A p), p = H^{-1} S exact Newton correction of the original equation, same fixed A as the residual",
+      "acceptance_rule_version": "coord-resid+coord-step+rcond+fixed-metric-mean/1",
+      "tol_root": 1e-06,
+      "tol_root_normalisation": "absolute beta difference between accepted roots from different starts",
+      "inference_rel": 1e-06,
+      "inference_rel_normalisation": "|a'S| / SE_beta"
+    },
+    "tolerances_frozen": true,
+    "joint_continuation": {
+      "enabled": true,
+      "step_initial": 0.5,
+      "step_max": 0.5,
+      "step_min": 0.015625,
+      "contraction": 0.5,
+      "growth": 2.0,
+      "growth_after_successes": 2,
+      "max_calls_per_target": 32,
+      "seed_policy": "nearest_certified_direct_J_or_C1_abs_tau_tie_lower"
+    },
+    "wz": {
+      "enabled": true,
+      "spj": false
+    },
+    "summary": {
+      "bootstrap_B": 999,
+      "bootstrap_seed": 20261003,
+      "coverage_z": 1.96
+    },
+    "main_run": true
+  },
+  "n500": {
+    "config_name": "wz_n500",
+    "packet": "M",
+    "base_seed": 20261004,
+    "master_N": 500,
+    "master_T": 2,
+    "dgps": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "cells": [
+      [
+        500,
+        2
+      ]
+    ],
+    "reps": [
+      1,
+      5000
+    ],
+    "tau_grid": [
+      1,
+      2
+    ],
+    "cancel_solve_order": [
+      2,
+      1
+    ],
+    "continuation_neighbor": {
+      "1": 2,
+      "2": null
+    },
+    "run_all_starts": true,
+    "contrast_basis": "helmert",
+    "offdiag": false,
+    "dgp_params": {
+      "sd_effect": 0.0625,
+      "sd_nu": 0.5,
+      "ar_rho": 0.3,
+      "beta0": 1,
+      "x_lag": 0.5,
+      "dgp4_variant": "tables"
+    },
+    "solver": {
+      "max_iter": 200,
+      "max_backtracks": 60,
+      "backtrack_factor": 0.5,
+      "armijo": 0.0001
+    },
+    "tolerances": {
+      "tol_scaled": 1e-10,
+      "tol_scaled_normalisation": "max_k |S_k| / sum_g sum_t |b_gtk| (t_gt + a_g w_gt)",
+      "tol_step": 1e-09,
+      "tol_step_normalisation": "||H^{-1} S||_inf in retained log-index coordinates",
+      "rcond_min": 1e-13,
+      "rcond_normalisation": "LAPACK dgecon 1-norm estimate of H/(s s'), s_k = sqrt(max(rowmax_k, colmax_k))",
+      "tol_metric_residual": 1e-10,
+      "tol_metric_residual_normalisation": "sqrt((S/n)' A^{-1} (S/n)); S raw estimating-equation sum, n fitted observations; A = H_Gamma/n for the raw-sum Gamma-pilot curvature or A = B'B/n for the already-averaged design-Gram fallback; lower Cholesky factor of A only",
+      "tol_metric_step": 1e-09,
+      "tol_metric_step_normalisation": "sqrt(p' A p), p = H^{-1} S exact Newton correction of the original equation, same fixed A as the residual",
+      "acceptance_rule_version": "coord-resid+coord-step+rcond+fixed-metric-mean/1",
+      "tol_root": 1e-06,
+      "tol_root_normalisation": "absolute beta difference between accepted roots from different starts",
+      "inference_rel": 1e-06,
+      "inference_rel_normalisation": "|a'S| / SE_beta"
+    },
+    "tolerances_frozen": true,
+    "joint_continuation": {
+      "enabled": true,
+      "step_initial": 0.5,
+      "step_max": 0.5,
+      "step_min": 0.015625,
+      "contraction": 0.5,
+      "growth": 2,
+      "growth_after_successes": 2,
+      "max_calls_per_target": 32,
+      "seed_policy": "nearest_certified_direct_J_or_C1_abs_tau_tie_lower"
+    },
+    "wz": {
+      "enabled": true,
+      "spj": false
+    },
+    "summary": {
+      "bootstrap_B": 999,
+      "bootstrap_seed": 20261003,
+      "coverage_z": 1.96
+    },
+    "main_run": true
+  },
+  "pilot": {
+    "N": 50,
+    "T": 2,
+    "dgps": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "reps": [
+      1,
+      100
+    ]
+  },
+  "source_selection": {
+    "original_dgp": 1,
+    "original_complete_cells": [
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        50,
+        2
+      ],
+      [
+        50,
+        5
+      ],
+      [
+        50,
+        10
+      ]
+    ],
+    "original_partial_cell": {
+      "N": 100,
+      "T": 2,
+      "first_rep": 1,
+      "last_rep": 3979
+    },
+    "repaired": "all other base cells and the N500 extension"
+  },
+  "methods": [
+    [
+      "P",
+      "PPML: raw",
+      "C",
+      1,
+      "raw",
+      "pair_sandwich"
+    ],
+    [
+      "PB",
+      "PPML: cancellation + correction",
+      "CB",
+      1,
+      "manuscript_bc",
+      "pair_sandwich"
+    ],
+    [
+      "PW",
+      "PPML: WZ coefficient correction",
+      "WZ-bc",
+      1,
+      "wz_bc",
+      "pair_sandwich"
+    ],
+    [
+      "GJ",
+      "GPML: joint effects",
+      "J",
+      2,
+      "raw",
+      "joint_naive"
+    ],
+    [
+      "G",
+      "GPML: cancellation",
+      "C",
+      2,
+      "raw",
+      "pair_sandwich"
+    ],
+    [
+      "GB",
+      "GPML: cancellation + correction",
+      "CB",
+      2,
+      "manuscript_bc",
+      "pair_sandwich"
+    ],
+    [
+      "Pu",
+      "PPML: raw / WZ unadjusted SE",
+      "C",
+      1,
+      "raw",
+      "wz_unadjusted"
+    ],
+    [
+      "Pa",
+      "PPML: raw / WZ adjusted SE",
+      "C",
+      1,
+      "raw",
+      "wz_adjusted"
+    ],
+    [
+      "PBu",
+      "PPML: cancellation + correction / WZ unadjusted SE",
+      "CB",
+      1,
+      "manuscript_bc",
+      "wz_unadjusted"
+    ],
+    [
+      "PBa",
+      "PPML: cancellation + correction / WZ adjusted SE",
+      "CB",
+      1,
+      "manuscript_bc",
+      "wz_adjusted"
+    ],
+    [
+      "PWu",
+      "PPML: WZ coefficient correction / WZ unadjusted SE",
+      "WZ-bc",
+      1,
+      "wz_bc",
+      "wz_unadjusted"
+    ],
+    [
+      "PWa",
+      "PPML: WZ coefficient correction / WZ adjusted SE",
+      "WZ-bc",
+      1,
+      "wz_bc",
+      "wz_adjusted"
+    ]
+  ]
+}

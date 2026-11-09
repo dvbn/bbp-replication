@@ -1,0 +1,81 @@
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Safeguarded solver outcomes and CPU time}
+\label{tab:solver-safeguarded-appendix}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & Accurate & \multicolumn{3}{c}{Unsuccessful fits} & \multicolumn{4}{c}{CPU seconds per attempt}\\
+\cmidrule(lr){3-5}\cmidrule(l){6-9}
+Solver & fits & Audit miss & Other & Limit & Median & Mean & 95th pct. & Max.\\
+\midrule
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=1,000\), PPML}: 15,642 attempts; 358 structural exclusions}\\
+Damped Newton & 15,637 & 5 & 0 & 0 & 0.0005 & 0.0005 & 0.0007 & 0.0028\\
+L-BFGS-B & 15,344 & 298 & 0 & 0 & 0.0007 & 0.0009 & 0.0018 & 0.0041\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=1,000\), GPML}: 15,642 attempts; 358 structural exclusions}\\
+Damped Newton & 15,642 & 0 & 0 & 0 & 0.0006 & 0.0006 & 0.0008 & 0.0024\\
+L-BFGS-B & 15,455 & 187 & 0 & 0 & 0.0007 & 0.0008 & 0.0012 & 0.0025\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=10,000\), PPML}: 16,000 attempts; 0 structural exclusions}\\
+Damped Newton & 15,999 & 1 & 0 & 0 & 0.0334 & 0.0354 & 0.0448 & 0.0653\\
+L-BFGS-B & 15,708 & 292 & 0 & 0 & 0.0127 & 0.0154 & 0.0295 & 0.1196\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Ordinary, \(n=10,000\), GPML}: 16,000 attempts; 0 structural exclusions}\\
+Damped Newton & 16,000 & 0 & 0 & 0 & 0.0339 & 0.0354 & 0.0447 & 0.0604\\
+L-BFGS-B & 15,377 & 623 & 0 & 0 & 0.0129 & 0.0144 & 0.0228 & 0.0685\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=1,000\), PPML}: 4,000 attempts; 0 structural exclusions}\\
+Damped Newton & 4,000 & 0 & 0 & 0 & 0.0008 & 0.0008 & 0.0010 & 0.0025\\
+L-BFGS-B & 1,719 & 2,281 & 0 & 0 & 0.0013 & 0.0021 & 0.0057 & 0.0107\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=1,000\), GPML}: 3,987 attempts; 13 structural exclusions}\\
+Damped Newton & 3,986 & 1 & 0 & 0 & 0.0008 & 0.0008 & 0.0010 & 0.0022\\
+L-BFGS-B & 2,499 & 1,488 & 0 & 0 & 0.0011 & 0.0019 & 0.0049 & 0.0107\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=10,000\), PPML}: 4,000 attempts; 0 structural exclusions}\\
+Damped Newton & 4,000 & 0 & 0 & 0 & 0.0498 & 0.0512 & 0.0625 & 0.0841\\
+L-BFGS-B & 236 & 3,764 & 0 & 0 & 0.0340 & 0.0689 & 0.1935 & 0.4160\\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Stress, \(n=10,000\), GPML}: 4,000 attempts; 0 structural exclusions}\\
+Damped Newton & 4,000 & 0 & 0 & 0 & 0.0497 & 0.0502 & 0.0622 & 0.0860\\
+L-BFGS-B & 1,327 & 2,673 & 0 & 0 & 0.0237 & 0.0494 & 0.1432 & 0.2743\\
+\addlinespace[2pt]
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} Full matched sample. Accurate fits pass the common \(10^{-8}\) check; audit misses are native successes failing that check. Other is the remaining native or numerical failure category. Limit combines disjoint internal iteration-limit failures and observed timeouts; the companion summaries keep their separate counts. CPU summaries include every attempted call, including unsuccessful and timed-out calls, but exclude data generation, external auditing and the separately recorded interrupted attempt. These are raw recorded costs, not clipped common-budget costs. IOLS is C++; NumPy is separate. Newton and IRLS use statsmodels. Full and exclude-inspected-20 summaries are in \texttt{data/solver\_summary}.
+\end{minipage}
+\end{singlespace}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Unsuccessful fits under the common computing budget (percent)}
+\label{tab:solver-all-six-common-cap}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Design, \(n\) & Equation & \shortstack{IOLS\\NumPy} & IOLS & Newton & IRLS & \shortstack{Damped\\Newton} & L-BFGS-B\\
+\midrule
+Ordinary, 1,000 & PPML & 0.00 & 0.00 & 0.00 & 0.00 & 0.03 & 1.91\\
+Ordinary, 1,000 & GPML & 0.00 & 0.00 & 1.94 & 0.07 & 0.00 & 1.20\\
+Ordinary, 10,000 & PPML & 0.00 & 0.00 & 0.00 & 0.00 & 0.01 & 1.82\\
+Ordinary, 10,000 & GPML & 0.00 & 0.00 & 0.32 & 0.04 & 0.00 & 3.89\\
+Stress, 1,000 & PPML & 0.00 & 0.00 & 0.15 & 0.15 & 0.00 & 57.03\\
+Stress, 1,000 & GPML & 0.03 & 0.00 & 14.62 & 40.98 & 0.03 & 37.32\\
+Stress, 10,000 & PPML & 0.00 & 0.00 & 4.67 & 0.35 & 0.00 & 94.10\\
+Stress, 10,000 & GPML & 0.00 & 0.00 & 27.75 & 75.02 & 0.00 & 66.83\\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} Percentages use attempted fits, excluding certified structural failures. Accuracy requires the common \(10^{-8}\) check and observed CPU and elapsed times no greater than 120 and 300 seconds. Historical over-budget calls and completed overruns are unsuccessful under this rule, not relabeled as observed timeouts. Raw outcome counts and costs appear in the preceding tables; the companion summaries keep the disjoint common-budget outcome counts and the exact sensitivity excluding the 20 inspected datasets. Damped Newton uses scikit-learn; L-BFGS-B uses SciPy without parameter bounds.
+\end{minipage}
+\end{singlespace}
+\end{table}

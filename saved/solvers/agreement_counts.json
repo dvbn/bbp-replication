@@ -1,0 +1,10 @@
+{
+  "datasets_completed": 40000,
+  "expected_datasets": 40000,
+  "pair_rows": 1200000,
+  "expected_pair_rows": 1200000,
+  "inspected_exclusion_keys": 20,
+  "inspected_keys_among_completed": 20,
+  "pairs_after_inspected_exclusion": 1199400,
+  "metrics_note": "Within-equation distances only; no new agreement tolerance or cross-equation equality."
+}

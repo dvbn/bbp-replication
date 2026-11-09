@@ -1,0 +1,161 @@
+{
+  "master_seed": 2026100301,
+  "run_split": "test",
+  "dgp_ids": [
+    "G_poisson",
+    "G_gamma",
+    "G_nb2_mild",
+    "G_nb2",
+    "G_nb2_strong",
+    "G_tweedie15",
+    "G_ig3",
+    "G_heterogeneous_nb2",
+    "G_lognormal",
+    "G_zero_lognormal",
+    "A_nb2",
+    "A_nb2_strong",
+    "B_nb2",
+    "B_nb2_strong",
+    "C_nb2",
+    "C_nb2_strong",
+    "S1_dispersion25_nb2_strong",
+    "S2_dispersion25_lognormal25",
+    "S3_contamination_p001_x500",
+    "S4_equicorrelated999_lognormal"
+  ],
+  "draws_per_cell": 1000,
+  "sizes": [
+    [
+      1000,
+      10
+    ],
+    [
+      10000,
+      100
+    ]
+  ],
+  "checks": {
+    "intercept_column": 0,
+    "gpml_lp_min_slope": 1e-07,
+    "ppml_separation_lp": false
+  },
+  "iols_control": {
+    "anderson_m": 5,
+    "delta_grid_size": 5,
+    "delta_log_max": 5,
+    "delta_log_min": -5,
+    "direct_restart_start": "phase1_start",
+    "eps": 1e-12,
+    "max_phase1_iterations": 100000,
+    "max_phase2_evaluations": 5000000,
+    "rho_grid_size": 150,
+    "rho_log_max": 14,
+    "rho_log_min": -7,
+    "stopcrit": 1000000,
+    "transformed_design_normalization": "scale"
+  },
+  "rho_grid_policy": "curvature_step_grid",
+  "methods": [
+    "iols_numpy",
+    "iols_cpp",
+    "statsmodels_newton",
+    "statsmodels_irls",
+    "sklearn_damped_newton",
+    "scipy_lbfgs"
+  ],
+  "equations": {
+    "ppml": 1,
+    "gpml": 2
+  },
+  "cpu_cap_seconds": 120,
+  "wall_cap_seconds": 300,
+  "library_control": {
+    "maxiter": 100000,
+    "maxfun": 1000000,
+    "native_tolerance": 1e-10,
+    "lbfgs_ftol": 0,
+    "lbfgs_maxls": 100
+  },
+  "inspected_datasets": [
+    [
+      "S1_dispersion25_nb2_strong_n10000_k100",
+      75
+    ],
+    [
+      "S1_dispersion25_nb2_strong_n10000_k100",
+      712
+    ],
+    [
+      "S1_dispersion25_nb2_strong_n10000_k100",
+      329
+    ],
+    [
+      "S1_dispersion25_nb2_strong_n10000_k100",
+      896
+    ],
+    [
+      "S2_dispersion25_lognormal25_n10000_k100",
+      37
+    ],
+    [
+      "S2_dispersion25_lognormal25_n1000_k10",
+      693
+    ],
+    [
+      "S2_dispersion25_lognormal25_n10000_k100",
+      50
+    ],
+    [
+      "S2_dispersion25_lognormal25_n10000_k100",
+      8
+    ],
+    [
+      "G_ig3_n10000_k100",
+      76
+    ],
+    [
+      "G_ig3_n1000_k10",
+      820
+    ],
+    [
+      "G_ig3_n10000_k100",
+      51
+    ],
+    [
+      "G_ig3_n10000_k100",
+      900
+    ],
+    [
+      "C_nb2_strong_n1000_k10",
+      891
+    ],
+    [
+      "C_nb2_strong_n1000_k10",
+      53
+    ],
+    [
+      "C_nb2_strong_n1000_k10",
+      672
+    ],
+    [
+      "C_nb2_strong_n1000_k10",
+      937
+    ],
+    [
+      "A_nb2_strong_n1000_k10",
+      79
+    ],
+    [
+      "A_nb2_strong_n1000_k10",
+      338
+    ],
+    [
+      "A_nb2_strong_n1000_k10",
+      285
+    ],
+    [
+      "A_nb2_strong_n1000_k10",
+      513
+    ]
+  ]
+}

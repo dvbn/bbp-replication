@@ -1,0 +1,98 @@
+[
+  [
+    "P",
+    "PPML: raw",
+    "C",
+    1,
+    "raw",
+    "pair_sandwich"
+  ],
+  [
+    "PB",
+    "PPML: cancellation + correction",
+    "CB",
+    1,
+    "manuscript_bc",
+    "pair_sandwich"
+  ],
+  [
+    "PW",
+    "PPML: WZ coefficient correction",
+    "WZ-bc",
+    1,
+    "wz_bc",
+    "pair_sandwich"
+  ],
+  [
+    "GJ",
+    "GPML: joint effects",
+    "J",
+    2,
+    "raw",
+    "joint_naive"
+  ],
+  [
+    "G",
+    "GPML: cancellation",
+    "C",
+    2,
+    "raw",
+    "pair_sandwich"
+  ],
+  [
+    "GB",
+    "GPML: cancellation + correction",
+    "CB",
+    2,
+    "manuscript_bc",
+    "pair_sandwich"
+  ],
+  [
+    "Pu",
+    "PPML: raw / WZ unadjusted SE",
+    "C",
+    1,
+    "raw",
+    "wz_unadjusted"
+  ],
+  [
+    "Pa",
+    "PPML: raw / WZ adjusted SE",
+    "C",
+    1,
+    "raw",
+    "wz_adjusted"
+  ],
+  [
+    "PBu",
+    "PPML: cancellation + correction / WZ unadjusted SE",
+    "CB",
+    1,
+    "manuscript_bc",
+    "wz_unadjusted"
+  ],
+  [
+    "PBa",
+    "PPML: cancellation + correction / WZ adjusted SE",
+    "CB",
+    1,
+    "manuscript_bc",
+    "wz_adjusted"
+  ],
+  [
+    "PWu",
+    "PPML: WZ coefficient correction / WZ unadjusted SE",
+    "WZ-bc",
+    1,
+    "wz_bc",
+    "wz_unadjusted"
+  ],
+  [
+    "PWa",
+    "PPML: WZ coefficient correction / WZ adjusted SE",
+    "WZ-bc",
+    1,
+    "wz_bc",
+    "wz_adjusted"
+  ]
+]
