@@ -1,0 +1,34 @@
+\begin{table}[!htbp]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Political centralization and nighttime light density}
+\label{table:michalopoulos}
+\setlength{\tabcolsep}{3pt}
+\newcommand{\BBPappmaincell}[2]{\(#1\;(#2)\)}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc@{}}
+\toprule
+Specification & Full & Drop 2\% & Drop 5\% & \(Y>0\) \\
+Observations & 682 & 668 & 646 & 517 \\
+\midrule
+OLS, \(c=10^{-5}\) & \BBPappmaincell{19.90}{0.122} & \BBPappmaincell{25.29^{*}}{0.066} & \BBPappmaincell{19.93}{0.196} & \BBPappmaincell{16.12^{**}}{0.014} \\
+OLS, \(c=0.01\) & \BBPappmaincell{19.32^{***}}{<0.001} & \BBPappmaincell{20.49^{***}}{<0.001} & \BBPappmaincell{16.20^{***}}{0.003} & \BBPappmaincell{17.18^{***}}{<0.001} \\
+OLS, \(c=1\) & \BBPappmaincell{5.44^{***}}{<0.001} & \BBPappmaincell{4.86^{***}}{<0.001} & \BBPappmaincell{2.85^{***}}{0.001} & \BBPappmaincell{4.99^{**}}{0.011} \\
+PPML & \BBPappmaincell{-10.46}{0.226} & \BBPappmaincell{21.43^{**}}{0.040} & \BBPappmaincell{8.24^{*}}{0.052} & \BBPappmaincell{-8.57}{0.360} \\
+GPML (J) & \BBPappmaincell{16.04^{**}}{0.011} & \BBPappmaincell{19.80^{***}}{0.002} & \BBPappmaincell{15.95^{**}}{0.032} & \BBPappmaincell{17.27^{***}}{0.005} \\
+GPML (C) & \BBPappmaincell{14.88^{**}}{0.019} & \BBPappmaincell{34.93^{***}}{<0.001} & \BBPappmaincell{15.94^{***}}{0.002} & \BBPappmaincell{11.56^{*}}{0.080} \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\BBPtablenotes{Percentage associations; two-sided normal \(p\)-values in parentheses:
+\(^{***}p<0.01\), \(^{**}p<0.05\), \(^{*}p<0.10\).
+J: joint country effects; C: cancellation.
+All models keep the original eleven controls and use signed country-and-family
+two-way cluster-robust covariance. The full sample has 48 countries and 94 ethnic families.
+Cuts remove the original-ranked 14 or 35 largest outcome values and keep
+164 zeros; \(Y>0\) excludes zeros without a tail cut. Counts reflect singleton
+exclusions. Appendix~\ref{app:applications} provides details.}
+\end{minipage}
+\end{singlespace}
+\end{table}

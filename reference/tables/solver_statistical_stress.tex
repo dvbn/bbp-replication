@@ -1,0 +1,56 @@
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Statistical behavior of accurate IOLS fits in the stress designs}
+\label{tab:solver-statistical-stress}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & & \multicolumn{2}{c}{Treatment coefficient} & \multicolumn{3}{c}{Normalized ATE}\\
+\cmidrule(lr){3-4}\cmidrule(l){5-7}
+Design / equation & Draws & Bias & SD & Bias (pp) & SD (pp) & Median (\%)\\
+\midrule
+\multicolumn{7}{@{}l}{\textbf{Panel A. Each equation's accurate IOLS fits}}\\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l}{\textit{\(n=1,000\), \(K=10\)}}\\
+Negative binomial, PPML & 1,000 & -0.0148 & 0.5748 & 17.61 & 81.22 & 7.52\\
+Negative binomial, GPML & 987 & 0.0872 & 0.9958 & \(1.39\!\times\!10^{7}\) & \(4.37\!\times\!10^{8}\) & 13.97\\
+Lognormal, PPML & 1,000 & 0.0533 & 1.0283 & 150.72 & 1809.84 & 10.69\\
+Lognormal, GPML & 1,000 & 0.0120 & 0.3993 & 10.38 & 50.96 & 10.59\\
+Contamination, PPML & 1,000 & -0.0053 & 0.9158 & 93.99 & 892.06 & 7.27\\
+Contamination, GPML & 1,000 & -0.0004 & 0.3847 & 8.29 & 48.04 & 8.10\\
+Near-collinearity, PPML & 1,000 & -0.0048 & 0.1803 & 1.24 & 20.00 & 7.11\\
+Near-collinearity, GPML & 1,000 & -0.0004 & 0.0792 & 0.29 & 8.63 & 7.89\\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l}{\textit{\(n=10,000\), \(K=100\)}}\\
+Negative binomial, PPML & 1,000 & -0.0095 & 0.1802 & 0.71 & 19.55 & 7.71\\
+Negative binomial, GPML & 1,000 & 0.0258 & 0.2155 & 5.44 & 24.86 & 10.54\\
+Lognormal, PPML & 1,000 & -0.0142 & 0.3025 & 3.46 & 34.69 & 5.01\\
+Lognormal, GPML & 1,000 & 0.0071 & 0.1260 & 1.64 & 14.03 & 8.37\\
+Contamination, PPML & 1,000 & 0.0025 & 0.2584 & 3.96 & 29.73 & 8.28\\
+Contamination, GPML & 1,000 & 0.0029 & 0.1026 & 0.89 & 11.16 & 8.27\\
+Near-collinearity, PPML & 1,000 & 0.0027 & 0.0599 & 0.48 & 6.50 & 8.26\\
+Near-collinearity, GPML & 1,000 & 0.0007 & 0.0254 & 0.11 & 2.75 & 8.08\\
+\midrule
+\multicolumn{7}{@{}l}{\textbf{Panel B. GPML: IOLS accurate, Newton and IRLS unsuccessful}}\\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l}{\textit{\(n=1,000\), \(K=10\)}}\\
+Negative binomial & 132 & 0.2473 & 2.0334 & \(1.04\!\times\!10^{8}\) & \(1.20\!\times\!10^{9}\) & 6.06\\
+Lognormal & 152 & 0.0329 & 0.4166 & 13.77 & 54.67 & 13.58\\
+Contamination & 55 & -0.0345 & 0.4274 & 6.35 & 51.48 & -8.36\\
+Near-collinearity & 0 & -- & -- & -- & -- & --\\
+\addlinespace[3pt]
+\multicolumn{7}{@{}l}{\textit{\(n=10,000\), \(K=100\)}}\\
+Negative binomial & 337 & 0.0369 & 0.2056 & 6.42 & 23.30 & 11.57\\
+Lognormal & 755 & 0.0100 & 0.1245 & 1.95 & 13.99 & 8.36\\
+Contamination & 18 & 0.0276 & 0.0947 & 3.49 & 10.38 & 9.30\\
+Near-collinearity & 0 & -- & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} The true coefficient is \(\log(1.08)\) and the true normalized ATE is 8\%. All estimates are from C++ IOLS and pass the common \(10^{-8}\) check within 120 CPU and 300 elapsed seconds. Panel A uses each equation's own accurate fits. The 987 smaller-sample negative-binomial GPML fits exclude 13 certified no-finite-root draws, rather than computational failures. Panel B additionally requires both statsmodels comparators to be unsuccessful under the same rule; its moments are conditional. Each saved coefficient is transformed by \(\exp(\widehat\beta_D)-1\) before computing target summaries. Bias is the empirical mean minus truth; SD is the empirical standard deviation, not a standard error. pp denotes percentage points. No accurate finite estimate is trimmed. Medians use the inverse empirical distribution; a dash denotes an empty selection, not zero. Full and exclude-inspected-20 summaries, selected-key hashes and extremes are kept in \texttt{data/solver\_summary}.
+\end{minipage}
+\end{singlespace}
+\end{table}

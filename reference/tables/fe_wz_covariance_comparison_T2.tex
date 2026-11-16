@@ -1,0 +1,35 @@
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{PPML covariance comparison, $T=2$: 5,000 replications per cell}
+\label{tab:fe-wz-covariance-comparison}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+ & & \multicolumn{2}{c}{Pair sandwich} & \multicolumn{2}{c}{WZ adjusted} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+DGP & $N$ & SE/SD & Cov. (\%) & SE/SD & Cov. (\%) & Avail.\\
+\midrule
+1 & 50 & 0.851 & 89.8 & 0.900 & 91.6 & 5,000 \\
+2 & 50 & 0.889 & 91.7 & 0.934 & 93.0 & 5,000 \\
+3 & 50 & 0.862 & 90.8 & 0.918 & 92.6 & 5,000 \\
+4 & 50 & 0.767 & 84.6 & 0.849 & 88.4 & 5,000 \\
+\addlinespace[3pt]
+1 & 100 & 0.916 & 92.6 & 0.947 & 94.0 & 5,000 \\
+2 & 100 & 0.947 & 93.6 & 0.973 & 94.3 & 5,000 \\
+3 & 100 & 0.912 & 92.4 & 0.946 & 93.5 & 5,000 \\
+4 & 100 & 0.790 & 86.0 & 0.853 & 88.6 & 5,000 \\
+\addlinespace[3pt]
+1 & 500 & 0.960 & 94.0 & 0.969 & 94.3 & 5,000 \\
+2 & 500 & 0.978 & 94.6 & 0.984 & 94.8 & 5,000 \\
+3 & 500 & 0.968 & 94.3 & 0.976 & 94.6 & 5,000 \\
+4 & 500 & 0.870 & 90.3 & 0.907 & 91.6 & 5,000 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} Both columns use the same WZ-corrected PPML coefficient; only the covariance changes. The ordinary pair sandwich has no finite-pair multiplier. WZ adjusted is the saved \citet{weidner2021bias} covariance including its finite-sample adjustment. SE/SD is mean standard error divided by the empirical SD of the corrected coefficient (denominator $R-1$). Cov. is nominal 95\% normal-interval coverage. Avail. counts available intervals for each covariance, out of 5,000 attempted replications; all coefficients and variances are available, with no excluded or nonpositive variance. The binomial Monte Carlo standard error of each coverage is at most 0.71 percentage points. The $N=500$ extension is independent of the smaller-size draws.
+\end{minipage}
+\end{singlespace}
+\end{table}

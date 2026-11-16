@@ -1,0 +1,48 @@
+\begin{table}[p]
+\centering
+\begin{singlespace}
+\normalsize
+\caption{Exploratory covariance comparison: first 100 saved draws, $N=50$, $T=2$}
+\label{tab:fe-higher-order-pilot}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+DGP & Covariance & SE/SD & Cov. (\%) & $\Delta$ (MCSE) & Avail.\\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Panel A: Cancelled PPML, generic coefficient correction}}\\
+1 & Pair sandwich & 0.912 & 90 & ref. & 100/100 \\
+1 & Higher order & 0.967 & 94 & 4 (1.97) & 100/100 \\
+1 & WZ adjusted & 0.963 & 94 & 4 (1.97) & 100/100 \\
+\addlinespace[2pt]
+2 & Pair sandwich & 0.942 & 91 & ref. & 100/100 \\
+2 & Higher order & 0.993 & 94 & 3 (1.71) & 100/100 \\
+2 & WZ adjusted & 0.990 & 94 & 3 (1.71) & 100/100 \\
+\addlinespace[2pt]
+3 & Pair sandwich & 0.909 & 92 & ref. & 100/100 \\
+3 & Higher order & 0.963 & 93 & 1 (1.00) & 100/100 \\
+3 & WZ adjusted & 0.968 & 94 & 2 (1.41) & 100/100 \\
+\addlinespace[2pt]
+4 & Pair sandwich & 0.825 & 86 & ref. & 100/100 \\
+4 & Higher order & 0.876 & 88 & 2 (1.41) & 100/100 \\
+4 & WZ adjusted & 0.912 & 89 & 3 (1.71) & 100/100 \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Panel B: Cancelled GPML, generic coefficient correction}}\\
+1 & Pair sandwich & 0.898 & 91 & ref. & 100/100 \\
+1 & Higher order & 0.947 & 91 & 0 (0.00) & 100/100 \\
+\addlinespace[2pt]
+2 & Pair sandwich & 0.930 & 92 & ref. & 100/100 \\
+2 & Higher order & 0.978 & 92 & 0 (0.00) & 100/100 \\
+\addlinespace[2pt]
+3 & Pair sandwich & 0.904 & 92 & ref. & 100/100 \\
+3 & Higher order & 0.959 & 92 & 0 (0.00) & 100/100 \\
+\addlinespace[2pt]
+4 & Pair sandwich & 0.822 & 87 & ref. & 100/100 \\
+4 & Higher order & 0.877 & 90 & 3 (1.71) & 100/100 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}
+\footnotesize\textit{Notes:} Every covariance within an equation uses the same generic corrected coefficient $\widehat\beta^{\rm bc}$, not the separate WZ coefficient correction. Higher order is $\widehat V_2=\widehat V_0-\widehat\Delta_n$ from Proposition~\ref{prop:fe-growing-covariance-refinement}, with no clipping, PSD projection or finite-pair multiplier. WZ adjusted applies only to PPML. SE/SD uses the empirical SD of these 100 corrected coefficients, not the 5,000-draw SD. Cov. is nominal 95\% normal-interval coverage. $\Delta$ is the paired coverage change from the pair sandwich, in percentage points; parentheses give its Monte Carlo standard error (sample SD of the 100 indicator differences divided by 10). Zero MCSE means no observed discordant indicators, not zero population uncertainty. Avail. is available intervals/attempted draws. All 800 fitted equations passed, with no nonpositive adjusted variance or omitted draw. Individual coverage MCSEs are 2.4--3.5 percentage points. This exploratory pilot is not a coverage or covariance-MSE guarantee.
+\end{minipage}
+\end{singlespace}
+\end{table}
